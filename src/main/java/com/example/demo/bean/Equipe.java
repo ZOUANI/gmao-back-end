@@ -8,10 +8,30 @@ public class Equipe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String ref;
     @OneToMany
     private List<MembreEquipe> membreEquipe;
     private String libelle;
     private String code;
+    @OneToOne
+    private MembreEquipe chefEquipe;
+
+    public String getRef() {
+        return ref;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+
+    public MembreEquipe getChefEquipe() {
+        return chefEquipe;
+    }
+
+    public void setChefEquipe(MembreEquipe chefEquipe) {
+        this.chefEquipe = chefEquipe;
+    }
+
 
     public Long getId() {
         return id;
