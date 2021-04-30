@@ -9,11 +9,16 @@ import org.springframework.stereotype.Repository;
  * @author mehdi
  */
 @Repository
-public interface EquipeDao extends JpaRepository<Equipe, Long>{
+public interface EquipeDao extends JpaRepository<Equipe, Long> {
+
     public Equipe findByLibelle(String libelle);
+
     public Equipe findByChefEquipeCollaborateurFullname(String fullname);
-    public Equipe findByCode(String code);  
+
+    public Equipe findByCode(String code);
+
     public Equipe findByRef(String ref);
+
     public int deleteByRef(String ref);
 
 }

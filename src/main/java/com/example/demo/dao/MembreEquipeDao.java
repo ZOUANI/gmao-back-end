@@ -15,9 +15,12 @@ import org.springframework.stereotype.Repository;
  * @author mehdi
  */
 @Repository
-public interface MembreEquipeDao extends JpaRepository<MembreEquipe, Long>{
+public interface MembreEquipeDao extends JpaRepository<MembreEquipe, Long> {
+
     public MembreEquipe findByCollaborateurFullname(String fullname);
+
     public MembreEquipe findByEquipeRef(String ref);
+
     public int deleteByCollaborateurFullname(String fullname);
-    
+
 }
