@@ -10,7 +10,7 @@ public class TypeMaterial {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private double description;
+    private String description;
     private String libelle;
     private String code;
 
@@ -22,11 +22,11 @@ public class TypeMaterial {
         this.id = id;
     }
 
-    public double getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(double description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
