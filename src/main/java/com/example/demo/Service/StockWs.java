@@ -1,4 +1,4 @@
-package com.example.demo.webService;
+package com.example.demo.Service;
 
 import com.example.demo.Service.StockService;
 import com.example.demo.bean.Stock;
