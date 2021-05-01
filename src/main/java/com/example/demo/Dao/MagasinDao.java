@@ -1,4 +1,4 @@
-package com.example.demo.Dao;
+package com.example.demo.dao;
 
 import com.example.demo.bean.Magasin;
 import org.springframework.data.jpa.repository.JpaRepository;

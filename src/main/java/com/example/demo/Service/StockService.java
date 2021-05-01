@@ -1,7 +1,7 @@
-package com.example.demo.Service;
+package com.example.demo.service;
 
-import com.example.demo.Dao.StockDao;
-import com.example.demo.Util.SimpleDb2ExcelExporter;
+import com.example.demo.dao.StockDao;
+import com.example.demo.util.SimpleDb2ExcelExporter;
 import com.example.demo.bean.Magasin;
 import com.example.demo.bean.Material;
 import com.example.demo.bean.Stock;
