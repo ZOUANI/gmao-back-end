@@ -10,6 +10,8 @@ public class Collaborateur {
     private Long id;
     private String codeCollaborateur;
     private String fullname;
+    @OneToOne
+    private MembreEquipe membreEquipe;
 
     public double getId() {
         return id;
