@@ -12,21 +12,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author mehdi
- */
 @Service
 public class EquipeService {
 
     @Autowired
     private EquipeDao equipeDao;
+    @Autowired
+    private MembreEquipeService membreEquipeService;
 
     @Transactional
     public int deleteByRef(String ref) {
         return equipeDao.deleteByRef(ref);
     }
-    
+
     public Equipe findByLibelle(String libelle) {
         return equipeDao.findByLibelle(libelle);
     }
@@ -46,9 +44,15 @@ public class EquipeService {
     public List<Equipe> findAll() {
         return equipeDao.findAll();
     }
-//    A Completer
-    public int save(Equipe equipe) {
-        return 0;
-    }
 
+    public int save(Equipe equipe) {
+        if (equipeDao.findByRef(equipe.getRef()) != null)
+            return -1;
+        else {
+            equipe.setChefEquipe(equipe.getChefEquipe());
+            equipeDao.save(equipe);
+            membreEquipeService.save(equipe, equipe.getMembreEquipe());
+            return 0;
+        }
+    }
 }

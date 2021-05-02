@@ -1,15 +1,20 @@
 package com.example.demo.bean;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 @Entity
 public class Equipe {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ref;
-    @OneToMany
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "equipe")
     private List<MembreEquipe> membreEquipe;
     private String libelle;
     private String code;
@@ -31,7 +36,6 @@ public class Equipe {
     public void setChefEquipe(MembreEquipe chefEquipe) {
         this.chefEquipe = chefEquipe;
     }
-
 
     public Long getId() {
         return id;

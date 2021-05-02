@@ -5,6 +5,8 @@
  */
 package com.example.demo.service;
 
+import com.example.demo.bean.Collaborateur;
+import com.example.demo.bean.Equipe;
 import com.example.demo.bean.MembreEquipe;
 import com.example.demo.dao.MembreEquipeDao;
 import java.util.List;
@@ -18,8 +20,11 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class MembreEquipeService {
+
     @Autowired
     private MembreEquipeDao membreEquipeDao;
+    @Autowired
+    private CollaborateurService collaborateurService;
 
     public MembreEquipe findByCollaborateurFullname(String fullname) {
         return membreEquipeDao.findByCollaborateurFullname(fullname);
@@ -28,6 +33,7 @@ public class MembreEquipeService {
     public MembreEquipe findByEquipeRef(String ref) {
         return membreEquipeDao.findByEquipeRef(ref);
     }
+
     @Transactional
     public int deleteByCollaborateurFullname(String fullname) {
         return membreEquipeDao.deleteByCollaborateurFullname(fullname);
@@ -37,10 +43,18 @@ public class MembreEquipeService {
         return membreEquipeDao.findAll();
     }
 
-//    A Completer
-    public int save(MembreEquipe membreEquipe) {
+    public int save(Equipe equipe, List<MembreEquipe> membreEquipes) {
+
+        for (MembreEquipe membre : membreEquipes) {
+
+            if (membre.getCollaborateur() != null && membre.getCollaborateur().getCodeCollaborateur() != null) {
+                Collaborateur collaborateur = collaborateurService
+                        .findByCodeCollaborateur(membre.getCollaborateur().getCodeCollaborateur());
+                membre.setCollaborateur(collaborateur);
+                membre.setEquipe(equipe);
+                membreEquipeDao.save(membre);
+            }
+        }
         return 0;
     }
-    
-    
 }

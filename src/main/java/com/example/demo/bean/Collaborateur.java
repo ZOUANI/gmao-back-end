@@ -8,9 +8,9 @@ public class Collaborateur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String CodeCollaborateur;
+    private String codeCollaborateur;
     private String fullname;
-    
+
     public double getId() {
         return id;
     }
@@ -20,11 +20,11 @@ public class Collaborateur {
     }
 
     public String getCodeCollaborateur() {
-        return CodeCollaborateur;
+        return codeCollaborateur;
     }
 
     public void setCodeCollaborateur(String codeCollaborateur) {
-        CodeCollaborateur = codeCollaborateur;
+        this.codeCollaborateur = codeCollaborateur;
     }
 
     public String getFullname() {

@@ -2,6 +2,7 @@ package com.example.demo.provided;
 
 import java.util.List;
 
+import com.example.demo.bean.Equipe;
 import com.example.demo.bean.MembreEquipe;
 import com.example.demo.service.MembreEquipeService;
 
@@ -40,8 +41,8 @@ public class MembreEquipeProvided {
  }
 
  @PostMapping("/")
- public int save(@RequestBody MembreEquipe membreEquipe) {
-  return membreEquipeService.save(membreEquipe);
+ public int save(@RequestBody Equipe equipe, @RequestBody List<MembreEquipe> membreEquipe) {
+  return membreEquipeService.save(equipe, membreEquipe);
  }
 
 }

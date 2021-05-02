@@ -2,6 +2,8 @@ package com.example.demo.bean;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class MembreEquipe {
     @Id
@@ -9,7 +11,8 @@ public class MembreEquipe {
     private Long id;
     @OneToOne
     private Collaborateur collaborateur;
-    @OneToOne
+    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToOne
     private Equipe equipe;
     private boolean activer;
 
