@@ -25,19 +25,19 @@ public class OperationStockProvided {
         return operationStockService.findByMagasinDestinationReferenceAndMagasinSourceReference(magasindestinationreference, magasinsourcereference);
     }
     @GetMapping("/refMaterial/{refMaterial}")
-    public List<OperationStock> findByMaterialRef(@PathVariable String refMaterial) {
-        return operationStockService.findByMaterialRef(refMaterial);
+    public List<OperationStock> findByMaterialReference(@PathVariable String refMaterial) {
+        return operationStockService.findByMaterialReference(refMaterial);
     }
     @GetMapping("/magasindestinationreference/{magasindestinationreference}/magasinsourcereference/{magasinsourcereference}/refMaterial/{refMaterial}")
-    public List<OperationStock> findByMagasinDestinationReferenceAndMagasinSourceReferenceAndMaterialRef(@PathVariable String magasindestinationreference,@PathVariable String magasinsourcereference,@PathVariable String refMaterial) {
-        return operationStockService.findByMagasinDestinationReferenceAndMagasinSourceReferenceAndMaterialRef(magasindestinationreference, magasinsourcereference, refMaterial);
+    public List<OperationStock> findByMagasinDestinationReferenceAndMagasinSourceReferenceAndMaterialReference(@PathVariable String magasindestinationreference,@PathVariable String magasinsourcereference,@PathVariable String refMaterial) {
+        return operationStockService.findByMagasinDestinationReferenceAndMagasinSourceReferenceAndMaterialReference(magasindestinationreference, magasinsourcereference, refMaterial);
     }
     @GetMapping("/")
     public List<OperationStock> findAll() {
         return operationStockService.findAll();
     }
-    @DeleteMapping("/id/{id}")
-    public void deleteById(Long id) {
-        operationStockService.deleteById(id);
+    @PostMapping("/")
+    public int transferer(@RequestBody OperationStock operationStock) {
+        return operationStockService.transferer(operationStock);
     }
 }

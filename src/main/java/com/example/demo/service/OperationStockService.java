@@ -20,7 +20,7 @@ public class OperationStockService {
     @Autowired
     private MagasinService magasinService;
     @Autowired
-    private MaterialDao materialDao;
+    private MaterialService materialService;
     public List<OperationStock> findByMagasinDestinationReference(String magasindestinationreference) {
         return operationStockDao.findByMagasinDestinationReference(magasindestinationreference);
     }
@@ -33,12 +33,12 @@ public class OperationStockService {
         return operationStockDao.findByMagasinDestinationReferenceAndMagasinSourceReference(magasindestinationreference, magasinsourcereference);
     }
 
-    public List<OperationStock> findByMaterialRef(String refMaterial) {
-        return operationStockDao.findByMaterialRef(refMaterial);
+    public List<OperationStock> findByMaterialReference(String refMaterial) {
+        return operationStockDao.findByMaterialReference(refMaterial);
     }
 
-    public List<OperationStock> findByMagasinDestinationReferenceAndMagasinSourceReferenceAndMaterialRef(String magasindestinationreference, String magasinsourcereference, String refMaterial) {
-        return operationStockDao.findByMagasinDestinationReferenceAndMagasinSourceReferenceAndMaterialRef(magasindestinationreference, magasinsourcereference, refMaterial);
+    public List<OperationStock> findByMagasinDestinationReferenceAndMagasinSourceReferenceAndMaterialReference(String magasindestinationreference, String magasinsourcereference, String refMaterial) {
+        return operationStockDao.findByMagasinDestinationReferenceAndMagasinSourceReferenceAndMaterialReference(magasindestinationreference, magasinsourcereference, refMaterial);
     }
 
     public List<OperationStock> findAll() {
@@ -48,56 +48,40 @@ public class OperationStockService {
     public void deleteById(Long id) {
         operationStockDao.deleteById(id);
     }
-
-    public int transporterleStock(String refmagasinSource, String refmagasinDestination, double qte, String refmaterial){
-        Stock  magasinSource=stokage.findByMagasinReferenceAndMaterialRef(refmagasinSource,refmaterial);
-        Stock magasinDestination=stokage.findByMagasinReferenceAndMaterialRef(refmagasinDestination,refmaterial);
-        Magasin magasinsource=magasinService.findByReference(refmagasinSource);
-        Magasin magasindestination=magasinService.findByReference(refmagasinDestination);
-        Material produit=materialDao.findByReference(refmaterial);
-        double produitqtesrc=magasinSource.getQte();
-        double produitqtedes =magasinDestination.getQte();
-        int materialqtesrc = 0;
-        if(magasinDestination!=null && magasinSource!=null && materialqtesrc>qte){
-            magasinSource.setQte(materialqtesrc-qte);
-            magasinDestination.setQte(materialqtesrc+qte);
-            OperationStock transport=new OperationStock();
-            transport.setQte(qte);
-            transport.setId(Long.valueOf("transport "+qte+" de "+refmaterial+" de magasin "+refmagasinSource+" a le magasin "+refmagasinDestination));
-            Material material = new Material();
-            transport.setMaterial(material);
-            transport.setMagasinDestination(magasindestination);
-            transport.setMagasinSource(magasinsource);
-            operationStockDao.save(transport);
-            return 1;
-        }
-        else return -2;
-    }
-    public int transferer(String refSource, String refDestination, String refMaterial, double qte) {
-        Magasin magasinSource = magasinService.findByReference(refSource);
-        Magasin magasinDestination = magasinService.findByReference(refDestination);
-        Material material = materialDao.findByReference(refMaterial);
+    public int transferer(OperationStock operationStock) {
+        Magasin magasinSource = magasinService.findByReference(operationStock.getMagasinSource().getReference());
+        Magasin magasinDestination = magasinService.findByReference(operationStock.getMagasinDestination().getReference());
+        Material material = materialService.findByReference(operationStock.getMaterial().getReference());
 
         if (material == null || magasinSource == null || magasinDestination == null)
             return -1;
 
-        Stock stockSource = stokage.findByMagasinReferenceAndMaterialRef(refSource, refMaterial);
+        Stock stockSource = stokage.findByMagasinReferenceAndMaterialReference(operationStock.getMagasinSource().getReference(), operationStock.getMaterial().getReference());
 
         if (stockSource == null) {
             return -2;
-        } else {
-            Stock stockDestination = stokage.findByMagasinReferenceAndMaterialRef(refSource, refMaterial);
+        }
+        if(stockSource.getQte()<operationStock.getQte()){
+            return -3;
+        }
+        else {
+            Stock stockDestination = stokage.findByMagasinReferenceAndMaterialReference(operationStock.getMagasinDestination().getReference(), operationStock.getMaterial().getReference());
             if (stockDestination == null) {
-
                 Stock myStock = new Stock();
                 myStock.setMagasin(magasinDestination);
                 myStock.setMaterial(material);
-                myStock.setQte(qte);
+                myStock.setQte(operationStock.getQte());
                 stokage.savestockage(myStock);
                 return 1;
             } else {
-                stockDestination.setQte(stockDestination.getQte() + qte);
-                stokage.savestockage(stockDestination);
+                stockDestination.setQte(stockDestination.getQte() + operationStock.getQte());
+                stockSource.setQte(stockSource.getQte()-operationStock.getQte());
+                OperationStock transport=new OperationStock();
+                transport.setQte(operationStock.getQte());
+                transport.setMaterial(material);
+                transport.setMagasinDestination(magasinDestination);
+                transport.setMagasinSource(magasinSource);
+                operationStockDao.save(transport);
                 return 2;
             }
 

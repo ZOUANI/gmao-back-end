@@ -8,7 +8,6 @@ public class OperationStock {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     @OneToOne
     private Material material;
     private double qte;

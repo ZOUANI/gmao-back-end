@@ -73,12 +73,4 @@ public class StockService {
     @Autowired
     private MagasinService magasinService;
 
-    public Stock findByMagasinReferenceAndMaterialRef(String refSource, String refMaterial) {
-        return null;
-    }
-
-    // public void findByMagasinReferenceAndMaterialRef(String refmagasinSource, String refmaterial){}
-
-
-
 }
