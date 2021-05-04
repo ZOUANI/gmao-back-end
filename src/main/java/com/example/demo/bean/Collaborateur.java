@@ -10,7 +10,7 @@ public class Collaborateur {
     private Long id;
     private String codeCollaborateur;
     private String fullname;
-    
+
     public double getId() {
         return id;
     }
