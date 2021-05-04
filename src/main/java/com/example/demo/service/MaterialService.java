@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.bean.TypeMaterial;
 import com.example.demo.dao.MaterialDao;
 import com.example.demo.bean.Material;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +39,6 @@ public class MaterialService {
     public int deleteByLibelle(String Libelle) {
         return materialDao.deleteByLibelle(Libelle);
     }
+//    public int save(Material material){
+//    }
 }
