@@ -7,12 +7,12 @@ public class InterventionCollaborateur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
-    private Collaborateur collaborateur;
-    @OneToOne
-    private Intervention intervention;
     @ManyToOne
-    private EtatIntervention etatIntervention;
+    private Collaborateur collaborateur;
+    @ManyToOne
+    private Intervention intervention;
+//    @ManyToOne
+//    private EtatIntervention etatIntervention;
 
     public Long getId() {
         return id;
@@ -38,11 +38,11 @@ public class InterventionCollaborateur {
         this.intervention = intervention;
     }
 
-    public EtatIntervention getEtatIntervention() {
-        return etatIntervention;
-    }
-
-    public void setEtatIntervention(EtatIntervention etatIntervention) {
-        this.etatIntervention = etatIntervention;
-    }
+//    public EtatIntervention getEtatIntervention() {
+//        return etatIntervention;
+//    }
+//
+//    public void setEtatIntervention(EtatIntervention etatIntervention) {
+//        this.etatIntervention = etatIntervention;
+//    }
 }

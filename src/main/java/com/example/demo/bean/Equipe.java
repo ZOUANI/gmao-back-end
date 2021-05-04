@@ -64,4 +64,5 @@ public class Equipe {
     public void setCode(String code) {
         this.code = code;
     }
+
 }

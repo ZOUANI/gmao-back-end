@@ -1,5 +1,8 @@
 package com.example.demo.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -9,18 +12,23 @@ public class Intervention {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @JsonFormat(pattern = "dd-MM-YYYY")
     private Date dateDeProbleme;
+    @JsonFormat(pattern = "dd-MM-YYYY")
     private Date dateDebut;
+    @JsonFormat(pattern = "dd-MM-YYYY")
     private Date dateFin;
     private String description;
     private String libelle;
+    private String code;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private EtatIntervention etatIntervention;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "intervention")
+    private List<InterventionCollaborateur> interventionCollaborateur;
 
-    @OneToOne
-    private InterventionCollaborateur interventionCollaborateur;
-
-    @OneToMany
+    @OneToMany(mappedBy = "intervention" )
     private List<MateraialIntervention> materaialInterventions;
 
     public Long getId() {
@@ -31,11 +39,11 @@ public class Intervention {
         this.id = id;
     }
 
-    public Date getDate() {
+    public Date getDateDeProbleme() {
         return dateDeProbleme;
     }
 
-    public void setDate(Date dateDeProbleme) {
+    public void setDateDeProbleme(Date dateDeProbleme) {
         this.dateDeProbleme = dateDeProbleme;
     }
 
@@ -71,12 +79,12 @@ public class Intervention {
         this.libelle = libelle;
     }
 
-    public InterventionCollaborateur getCollaborateurs() {
-        return interventionCollaborateur;
+    public String getCode() {
+        return code;
     }
 
-    public void setCollaborateurs(InterventionCollaborateur interventionCollaborateur) {
-        this.interventionCollaborateur = interventionCollaborateur;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public EtatIntervention getEtatIntervention() {
@@ -85,6 +93,14 @@ public class Intervention {
 
     public void setEtatIntervention(EtatIntervention etatIntervention) {
         this.etatIntervention = etatIntervention;
+    }
+
+    public List<InterventionCollaborateur> getInterventionCollaborateur() {
+        return interventionCollaborateur;
+    }
+
+    public void setInterventionCollaborateur(List<InterventionCollaborateur> interventionCollaborateur) {
+        this.interventionCollaborateur = interventionCollaborateur;
     }
 
     public List<MateraialIntervention> getMateraialInterventions() {
