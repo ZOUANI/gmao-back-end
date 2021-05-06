@@ -27,9 +27,10 @@ public class Intervention {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "intervention")
     private List<InterventionCollaborateur> interventionCollaborateur;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy="intervention")
     private List<Conseils> conseils;
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "intervention" )
     private List<MateraialIntervention> materaialInterventions;
 
