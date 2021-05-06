@@ -10,6 +10,8 @@ import com.example.demo.bean.MembreEquipe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  *
  * @author mehdi
@@ -19,8 +21,8 @@ public interface MembreEquipeDao extends JpaRepository<MembreEquipe, Long> {
 
     public MembreEquipe findByCollaborateurFullname(String fullname);
 
-    public MembreEquipe findByEquipeRef(String ref);
-
+    public List<MembreEquipe> findByEquipeRef(String ref);
+    public MembreEquipe  findByCollaborateurCodeCollaborateur(String code);
     public int deleteByCollaborateurFullname(String fullname);
 
 }

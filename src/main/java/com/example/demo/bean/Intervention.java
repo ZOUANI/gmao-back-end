@@ -27,6 +27,8 @@ public class Intervention {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "intervention")
     private List<InterventionCollaborateur> interventionCollaborateur;
+    @OneToMany(mappedBy="intervention")
+    private List<Conseils> conseils;
 
     @OneToMany(mappedBy = "intervention" )
     private List<MateraialIntervention> materaialInterventions;
@@ -109,5 +111,13 @@ public class Intervention {
 
     public void setMateraialInterventions(List<MateraialIntervention> materaialInterventions) {
         this.materaialInterventions = materaialInterventions;
+    }
+
+    public List<Conseils> getConseils() {
+        return conseils;
+    }
+
+    public void setConseils(List<Conseils> conseils) {
+        this.conseils = conseils;
     }
 }

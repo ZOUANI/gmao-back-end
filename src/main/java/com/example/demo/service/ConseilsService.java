@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.bean.Collaborateur;
 import com.example.demo.bean.Conseils;
 import com.example.demo.bean.Equipe;
+import com.example.demo.bean.Intervention;
 import com.example.demo.dao.ConseilsDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,9 +51,12 @@ public class ConseilsService {
     public List<Conseils> findAll() {
         return conseilsDao.findAll();
     }
-    public int save(Conseils conseils){
+
+    public int save(Intervention intervention, Conseils conseils){
         Collaborateur collaborateur=collaborateurService.findByCodeCollaborateur(conseils.getCollaborateur().getCodeCollaborateur());
         Equipe equipe=equipeService.findByRef(conseils.getEquipe().getRef());
+//        DateTimeFormatter localdate = DateTimeFormatter.ofPattern("dd-MM-YYYY HH:mm:ss");
+//        LocalDateTime now = LocalDateTime.now();
         if(collaborateur==null || equipe==null){
             return -2;
         }
@@ -63,6 +67,7 @@ public class ConseilsService {
             conseil.setDateDeMessage(conseils.getDateDeMessage());
             conseil.setEquipe(equipe);
             conseil.setMessage(conseils.getMessage());
+            conseil.setIntervention(intervention);
             conseilsDao.save(conseil);
             return 1;
         }

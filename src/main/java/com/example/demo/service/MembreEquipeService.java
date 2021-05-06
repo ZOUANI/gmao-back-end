@@ -30,8 +30,12 @@ public class MembreEquipeService {
         return membreEquipeDao.findByCollaborateurFullname(fullname);
     }
 
-    public MembreEquipe findByEquipeRef(String ref) {
+    public List<MembreEquipe> findByEquipeRef(String ref) {
         return membreEquipeDao.findByEquipeRef(ref);
+    }
+
+    public MembreEquipe findByCollaborateurCodeCollaborateur(String code) {
+        return membreEquipeDao.findByCollaborateurCodeCollaborateur(code);
     }
 
     @Transactional
@@ -43,18 +47,9 @@ public class MembreEquipeService {
         return membreEquipeDao.findAll();
     }
 
-    public int save(Equipe equipe, List<MembreEquipe> membreEquipes) {
+    public int save(Equipe equipe, MembreEquipe membreEquipe) {
 
-        for (MembreEquipe membre : membreEquipes) {
 
-            if (membre.getCollaborateur() != null && membre.getCollaborateur().getCodeCollaborateur() != null) {
-                Collaborateur collaborateur = collaborateurService
-                        .findByCodeCollaborateur(membre.getCollaborateur().getCodeCollaborateur());
-                membre.setCollaborateur(collaborateur);
-                membre.setEquipe(equipe);
-                membreEquipeDao.save(membre);
-            }
-        }
         return 0;
     }
 }

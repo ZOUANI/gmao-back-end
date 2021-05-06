@@ -17,6 +17,8 @@ public class Conseils {
     private String message;
     @JsonFormat(pattern = "dd-MM-YYYY")
     private Date dateDeMessage;
+    @ManyToOne
+    private Intervention intervention;
 
     public Long getId() {
         return id;
@@ -58,4 +60,11 @@ public class Conseils {
         this.dateDeMessage = dateDeMessage;
     }
 
+    public Intervention getIntervention() {
+        return intervention;
+    }
+
+    public void setIntervention(Intervention intervention) {
+        this.intervention = intervention;
+    }
 }

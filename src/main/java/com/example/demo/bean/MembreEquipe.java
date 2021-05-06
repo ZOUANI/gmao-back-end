@@ -38,4 +38,12 @@ public class MembreEquipe {
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
     }
+
+    public boolean isActiver() {
+        return activer;
+    }
+
+    public void setActiver(boolean activer) {
+        this.activer = activer;
+    }
 }

@@ -1,9 +1,9 @@
 package com.example.demo.provided;
 
 import com.example.demo.bean.Conseils;
+import com.example.demo.bean.Intervention;
 import com.example.demo.service.ConseilsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -50,7 +50,7 @@ public class ConseilsProvided {
         return conseilsService.findAll();
     }
     @PostMapping("/")
-    public int save(@RequestBody Conseils conseils) {
-        return conseilsService.save(conseils);
+    public int save(@RequestBody Intervention intervention, @RequestBody Conseils conseils) {
+        return conseilsService.save(intervention, conseils);
     }
 }

@@ -24,6 +24,8 @@ public class InterventionService {
     private MaterialService materialService;
     @Autowired
     private MateraialInterventionService materaialInterventionService;
+    @Autowired
+    private ConseilsService conseilsService;
 
     public Intervention findByCode(String code) {
         return interventionDao.findByCode(code);
@@ -60,10 +62,10 @@ public class InterventionService {
         if(etatIntervention==null)
             return -2;
 
-        if (findByCode(intervention.getCode())!=null) {
+        if (findByCode(intervention.getCode())==null) {
             intervention.setEtatIntervention(etatIntervention);
             interventionDao.save(intervention);
-            int b = 2, a = 2;
+            int b = 2, a = 2,c=2;
             for (MateraialIntervention materaialIntervention : intervention.getMateraialInterventions()) {
                 materaialIntervention.setIntervention(intervention);
                 b = materaialInterventionService.save(materaialIntervention);
@@ -72,11 +74,14 @@ public class InterventionService {
                 interventionCollaborateur.setIntervention(intervention);
                 a = interventionCollaborateurService.save(interventionCollaborateur);
             }
+            for(Conseils conseils : intervention.getConseils()){
+                c=conseilsService.save(intervention,conseils);
+            }
 
-            return a + b;
+            return a + b + c;
         }
         else
-            return -3;
+            return -100;
     }
 //        EtatIntervention etatIntervention=etatInterventionService.findByCode(intervention.getEtatIntervention().getCode());
 //        intervention.setEtatIntervention(etatIntervention);

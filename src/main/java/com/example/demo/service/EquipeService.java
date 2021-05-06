@@ -5,7 +5,9 @@
  */
 package com.example.demo.service;
 
+import com.example.demo.bean.Collaborateur;
 import com.example.demo.bean.Equipe;
+import com.example.demo.bean.MembreEquipe;
 import com.example.demo.dao.EquipeDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,8 @@ public class EquipeService {
     private EquipeDao equipeDao;
     @Autowired
     private MembreEquipeService membreEquipeService;
-
+    @Autowired
+    private CollaborateurService collaborateurService;
     @Transactional
     public int deleteByRef(String ref) {
         return equipeDao.deleteByRef(ref);
@@ -49,10 +52,11 @@ public class EquipeService {
         if (equipeDao.findByRef(equipe.getRef()) != null)
             return -1;
         else {
-            // equipe.setChefEquipe(equipe.getChefEquipe());
-            equipe.setChefEquipe(null);
             equipeDao.save(equipe);
-            membreEquipeService.save(equipe, equipe.getMembreEquipe());
+            for(MembreEquipe membreEquipe:equipe.getMembreEquipe()){
+                membreEquipeService.save(equipe,membreEquipe);
+            }
+
             return 0;
         }
     }

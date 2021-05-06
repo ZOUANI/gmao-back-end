@@ -26,7 +26,7 @@ public class MembreEquipeProvided {
  }
 
  @GetMapping("/equipe/ref/{ref}")
- public MembreEquipe findByEquipeRef(@PathVariable String ref) {
+ public List<MembreEquipe> findByEquipeRef(@PathVariable String ref) {
   return membreEquipeService.findByEquipeRef(ref);
  }
 
@@ -41,8 +41,11 @@ public class MembreEquipeProvided {
  }
 
  @PostMapping("/")
- public int save(@RequestBody Equipe equipe, @RequestBody List<MembreEquipe> membreEquipe) {
+ public int save(@RequestBody Equipe equipe, @RequestBody MembreEquipe membreEquipe) {
   return membreEquipeService.save(equipe, membreEquipe);
  }
-
+ @GetMapping("/collaborateur/code/{code}")
+ public MembreEquipe findByCollaborateurCodeCollaborateur(String code) {
+  return membreEquipeService.findByCollaborateurCodeCollaborateur(code);
+ }
 }
