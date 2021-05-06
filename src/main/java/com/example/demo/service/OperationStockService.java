@@ -6,13 +6,18 @@ import com.example.demo.bean.Material;
 import com.example.demo.bean.Stock;
 import com.example.demo.dao.OperationStockDao;
 import com.example.demo.dao.MaterialDao;
+import com.example.demo.service.util.StringUtil;
+import com.example.demo.vo.OperationStockVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
 import java.util.List;
 
 @Service
 public class OperationStockService {
+
     @Autowired
     private OperationStockDao operationStockDao;
     @Autowired
@@ -21,6 +26,24 @@ public class OperationStockService {
     private MagasinService magasinService;
     @Autowired
     private MaterialService materialService;
+    @Autowired
+    private EntityManager entityManager;
+
+    public List<OperationStock> findByCriteria(OperationStockVo operationStockVo){
+        String query="SELECT o FROM OperationStock o WHERE 1=1 ";
+        if(StringUtil.isNotEmpty(operationStockVo.getReferences()))
+            query+=" AND o.references ='"+operationStockVo.getReferences()+"'";
+
+        if(StringUtil.isNotEmpty(operationStockVo.getQteMin()))
+            query+=" AND o.Qte >= '"+operationStockVo.getQteMin()+"'";
+
+        if(StringUtil.isNotEmpty(operationStockVo.getQteMax()))
+            query+=" AND o.Qte <= '"+operationStockVo.getQteMax()+"'";
+
+        return entityManager.createQuery(query).getResultList();
+    }
+
+
     public List<OperationStock> findByMagasinDestinationReference(String magasindestinationreference) {
         return operationStockDao.findByMagasinDestinationReference(magasindestinationreference);
     }

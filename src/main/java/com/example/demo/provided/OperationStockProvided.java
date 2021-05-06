@@ -2,6 +2,7 @@ package com.example.demo.provided;
 
 import com.example.demo.service.OperationStockService;
 import com.example.demo.bean.OperationStock;
+import com.example.demo.vo.OperationStockVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,11 @@ import java.util.List;
 @RestController
 @RequestMapping("Stock/OperationStockBean")
 public class OperationStockProvided {
+    @PostMapping("/criteria")
+    public List<OperationStock> findByCriteria(@RequestBody OperationStockVo operationStockVo) {
+        return operationStockService.findByCriteria(operationStockVo);
+    }
+
     @Autowired
     OperationStockService operationStockService;
     @GetMapping("/magasindestinationreference/{magasindestinationreference}")
@@ -40,4 +46,5 @@ public class OperationStockProvided {
     public int transferer(@RequestBody OperationStock operationStock) {
         return operationStockService.transferer(operationStock);
     }
+
 }
