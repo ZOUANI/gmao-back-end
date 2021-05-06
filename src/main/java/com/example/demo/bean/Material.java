@@ -54,4 +54,6 @@ public class Material {
     public void setReference(String reference) {
         this.reference = reference;
     }
+
+
 }
