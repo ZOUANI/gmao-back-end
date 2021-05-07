@@ -46,4 +46,8 @@ public class InterventionProvided {
     public int save(@RequestBody Intervention intervention) {
         return interventionService.save(intervention);
     }
+    @PutMapping("/code/{code}")
+    public int update(@PathVariable String code,@RequestBody Intervention intervention) {
+        return interventionService.update(code, intervention);
+    }
 }
