@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -96,25 +97,15 @@ public class InterventionService {
                 interventionCollaborateur.setIntervention(intervention);
                 a = interventionCollaborateurService.save(interventionCollaborateur);
             }
-            for(Conseils conseils : intervention.getConseils()){
+            for(Consigne conseils : intervention.getConseils()){
                 c=conseilsService.save(intervention,conseils);
             }
 
             return a + b + c;
         }
         else
-            return -100;
+            return -1;
     }
-//        EtatIntervention etatIntervention=etatInterventionService.findByCode(intervention.getEtatIntervention().getCode());
-//        intervention.setEtatIntervention(etatIntervention);
-//        interventionDao.save(intervention);
-//        for (MateraialIntervention materaialIntervention : intervention.getMateraialInterventions()) {
-//            materaialInterventionService.save(intervention, materaialIntervention);
-//        }
-//        for (InterventionCollaborateur interventionCollaborateur : intervention.getInterventionCollaborateur()) {
-//
-//            interventionCollaborateurService.save(intervention,interventionCollaborateur);
-//        }
-//        return 1;
-//    }
+
+
 }

@@ -14,6 +14,5 @@ public interface OperationStockDao extends JpaRepository<OperationStock,Long> {
    // List<OperationStock> findByMaterialRef(String refMaterial);
     List<OperationStock> findByMagasinDestinationReferenceAndMagasinSourceReferenceAndMaterialReference(String magasindestinationreference,String magasinsourcereference,String refMaterial);
     List<OperationStock> findAll();
-
     List<OperationStock> findByMaterialReference(String refMaterial);
 }

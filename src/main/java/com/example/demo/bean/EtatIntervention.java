@@ -12,7 +12,7 @@ public class EtatIntervention {
     private Long id;
     private String libelle;
     private String code;
-    private String couleurIntervention;
+    private String couleur;
     public Long getId() {
         return id;
     }
@@ -37,11 +37,11 @@ public class EtatIntervention {
         this.code = code;
     }
 
-    public String getCouleurIntervention() {
-        return couleurIntervention;
+    public String getCouleur() {
+        return couleur;
     }
 
-    public void setCouleurIntervention(String couleurIntervention) {
-        this.couleurIntervention = couleurIntervention;
+    public void setCouleur(String couleurIntervention) {
+        this.couleur = couleurIntervention;
     }
 }

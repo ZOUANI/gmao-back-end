@@ -24,8 +24,8 @@ public class OperationStock {
         this.id = id;
     }
 
-    public static Material getMaterial() {
-        return getMaterial();
+    public Material getMaterial() {
+        return material;
     }
 
     public void setMaterial(Material material) {

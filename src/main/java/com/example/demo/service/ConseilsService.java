@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.bean.Collaborateur;
-import com.example.demo.bean.Conseils;
+import com.example.demo.bean.Consigne;
 import com.example.demo.bean.Equipe;
 import com.example.demo.bean.Intervention;
 import com.example.demo.dao.ConseilsDao;
@@ -20,21 +20,21 @@ public class ConseilsService {
     private CollaborateurService collaborateurService;
     @Autowired
     private EquipeService equipeService;
-    public List<Conseils> findByCollaborateurCodeCollaborateur(String code) {
+    public List<Consigne> findByCollaborateurCodeCollaborateur(String code) {
         return conseilsDao.findByCollaborateurCodeCollaborateur(code);
     }
 
-    public List<Conseils> findByEquipeRef(String ref) {
-        return conseilsDao.findByEquipeRef(ref);
-    }
+//    public List<Consigne> findByEquipeRef(String ref) {
+//        return conseilsDao.findByEquipeRef(ref);
+//    }
 
-    public List<Conseils> findByDateDeMessage(Date date) {
+    public List<Consigne> findByDateDeMessage(Date date) {
         return conseilsDao.findByDateDeMessage(date);
     }
-
-    public List<Conseils> findByEquipeRefAndCollaborateurcodeCollaborateur(String ref, String code) {
-        return conseilsDao.findByEquipeRefAndCollaborateurCodeCollaborateur(ref, code);
-    }
+//
+//    public List<Consigne> findByEquipeRefAndCollaborateurcodeCollaborateur(String ref, String code) {
+//        return conseilsDao.findByEquipeRefAndCollaborateurCodeCollaborateur(ref, code);
+//    }
     @Transactional
     public void deleteById(Long id) {
         conseilsDao.deleteById(id);
@@ -48,24 +48,25 @@ public class ConseilsService {
         return conseilsDao.deleteByCollaborateurCodeCollaborateur(code);
     }
 
-    public List<Conseils> findAll() {
+    public List<Consigne> findAll() {
         return conseilsDao.findAll();
     }
 
-    public int save(Intervention intervention, Conseils conseils){
+    public int save(Intervention intervention, Consigne conseils){
         Collaborateur collaborateur=collaborateurService.findByCodeCollaborateur(conseils.getCollaborateur().getCodeCollaborateur());
-        Equipe equipe=equipeService.findByRef(conseils.getEquipe().getRef());
+//        Equipe equipe=equipeService.findByRef(conseils.etEquipe().getRef());
 //        DateTimeFormatter localdate = DateTimeFormatter.ofPattern("dd-MM-YYYY HH:mm:ss");
 //        LocalDateTime now = LocalDateTime.now();
-        if(collaborateur==null || equipe==null){
+        if(collaborateur==null ){
+//            || equipe==null)
             return -2;
         }
         else
         {
-            Conseils conseil=new Conseils();
+            Consigne conseil=new Consigne();
             conseil.setCollaborateur(collaborateur);
             conseil.setDateDeMessage(conseils.getDateDeMessage());
-            conseil.setEquipe(equipe);
+//            conseil.setEquipe(equipe);
             conseil.setMessage(conseils.getMessage());
             conseil.setIntervention(intervention);
             conseilsDao.save(conseil);

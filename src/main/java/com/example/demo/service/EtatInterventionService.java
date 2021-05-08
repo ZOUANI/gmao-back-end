@@ -18,7 +18,7 @@ public class EtatInterventionService {
     }
 
     public List<EtatIntervention> findByCouleurIntervention(String couleurIntervention) {
-        return etatInterventionDao.findByCouleurIntervention(couleurIntervention);
+        return etatInterventionDao.findByCouleur(couleurIntervention);
     }
     @Transactional
     public int deleteByCode(String code) {

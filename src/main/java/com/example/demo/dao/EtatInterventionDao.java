@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface EtatInterventionDao extends JpaRepository<EtatIntervention,Long> {
     EtatIntervention findByCode(String code);
-    List<EtatIntervention> findByCouleurIntervention(String couleurIntervention);
+    List<EtatIntervention> findByCouleur(String couleur);
     int deleteByCode(String code);
 }

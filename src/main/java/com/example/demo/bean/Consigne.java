@@ -6,14 +6,14 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Conseils {
+public class Consigne {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
     private Collaborateur collaborateur;
-    @ManyToOne
-    private Equipe equipe;
+//    @ManyToOne
+//    private Equipe equipe;
     private String message;
     @JsonFormat(pattern = "dd-MM-YYYY")
     private Date dateDeMessage;
@@ -36,14 +36,14 @@ public class Conseils {
         this.collaborateur = collaborateur;
     }
 
-    public Equipe getEquipe() {
+   /* public Equipe getEquipe() {
         return equipe;
     }
 
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
     }
-
+*/
     public String getMessage() {
         return message;
     }
