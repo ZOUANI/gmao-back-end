@@ -1,7 +1,6 @@
 package com.example.demo.bean;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class StockCollaborateur {

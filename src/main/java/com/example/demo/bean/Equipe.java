@@ -18,6 +18,7 @@ public class Equipe {
     private List<MembreEquipe> membreEquipe;
     private String libelle;
     private String code;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToOne
     private MembreEquipe chefEquipe;
 

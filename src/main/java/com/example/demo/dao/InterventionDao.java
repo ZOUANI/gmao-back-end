@@ -13,6 +13,8 @@ public interface InterventionDao extends JpaRepository<Intervention,Long> {
     List<Intervention> findByDateDebutAndDateFin(String dateDebut,String DateFin);
     List<Intervention> findByEtatIntervention(String etatIntervention);
     List<Intervention> findAll();
+    List<Intervention> findByInterventionMembreEquipeEquipeRef(String ref);
+    List<Intervention> findByInterventionMembreEquipeMembreEquipeCollaborateurCodeCollaborateur(String code);
     int deleteByCode(String code);
     int deleteByEtatIntervention(String etatIntervention);
 }

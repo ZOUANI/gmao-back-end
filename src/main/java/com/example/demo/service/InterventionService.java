@@ -17,7 +17,7 @@ public class InterventionService {
     @Autowired
     private CollaborateurService collaborateurService;
     @Autowired
-    private InterventionCollaborateurService interventionCollaborateurService;
+    private InterventionMembreEquipeService interventionMembreEquipeService;
     @Autowired
     private MagasinService magasinService;
     @Autowired
@@ -61,8 +61,8 @@ public class InterventionService {
         if (interventions!=null){
             if(intervention.getEtatIntervention()!=null)
                  interventions.setEtatIntervention(intervention.getEtatIntervention());
-            if (intervention.getInterventionCollaborateur()!=null)
-                interventions.setInterventionCollaborateur(intervention.getInterventionCollaborateur());
+            if (intervention.getInterventionMembreEquipe()!=null)
+                interventions.setInterventionMembreEquipe(intervention.getInterventionMembreEquipe());
             if (intervention.getMateraialInterventions()!=null)
                 interventions.setMateraialInterventions(intervention.getMateraialInterventions());
             interventions.setCode(intervention.getCode());
@@ -92,9 +92,9 @@ public class InterventionService {
                 materaialIntervention.setIntervention(intervention);
                 b = materaialInterventionService.save(materaialIntervention);
             }
-            for (InterventionCollaborateur interventionCollaborateur : intervention.getInterventionCollaborateur()) {
+            for (InterventionMembreEquipe interventionCollaborateur : intervention.getInterventionMembreEquipe()) {
                 interventionCollaborateur.setIntervention(intervention);
-                a = interventionCollaborateurService.save(interventionCollaborateur);
+                a = interventionMembreEquipeService.save(interventionCollaborateur);
             }
             for(Conseils conseils : intervention.getConseils()){
                 c=conseilsService.save(intervention,conseils);
