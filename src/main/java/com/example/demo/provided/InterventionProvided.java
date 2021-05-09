@@ -2,6 +2,8 @@ package com.example.demo.provided;
 
 import com.example.demo.bean.Intervention;
 import com.example.demo.service.InterventionService;
+import com.example.demo.vo.InterventionVo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,10 @@ public class InterventionProvided {
     @GetMapping("findCode/{code}")
     public Intervention findByCode(@PathVariable String code) {
         return interventionService.findByCode(code);
+    }
+    @PostMapping("/criteria")
+    public List<Intervention> findByCriteria(@RequestBody InterventionVo interventionVo){
+    return  interventionService.findByCriteria(interventionVo);
     }
     @GetMapping("dateProbleme/{dateDeProbleme}")
     public List<Intervention> findByDateDeProbleme(@PathVariable String dateDeProbleme) {
