@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Consigne {
+public class Conseils {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

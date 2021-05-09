@@ -1,6 +1,6 @@
 package com.example.demo.provided;
 
-import com.example.demo.bean.Consigne;
+import com.example.demo.bean.Conseils;
 import com.example.demo.bean.Intervention;
 import com.example.demo.service.ConseilsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class ConseilsProvided {
     @Autowired
     private ConseilsService conseilsService;
     @GetMapping("CodeCollaborateur/{code}")
-    public List<Consigne> findByCollaborateurCodeCollaborateur(@PathVariable  String code) {
+    public List<Conseils> findByCollaborateurCodeCollaborateur(@PathVariable  String code) {
         return conseilsService.findByCollaborateurCodeCollaborateur(code);
     }
     /*@GetMapping("EquipRef/{ref}")
@@ -23,7 +23,7 @@ public class ConseilsProvided {
         return conseilsService.findByEquipeRef(ref);
     }*/
     @GetMapping("date/{date}")
-    public List<Consigne> findByDateDeMessage(Date date) {
+    public List<Conseils> findByDateDeMessage(Date date) {
         return conseilsService.findByDateDeMessage(date);
     }
 //    @GetMapping("EquipRef/{ref}/CodeCollaborateur/{code}")
@@ -46,11 +46,11 @@ public class ConseilsProvided {
         return conseilsService.deleteByCollaborateurCodeCollaborateur(code);
     }
     @GetMapping("/")
-    public List<Consigne> findAll() {
+    public List<Conseils> findAll() {
         return conseilsService.findAll();
     }
     @PostMapping("/")
-    public int save(@RequestBody Intervention intervention, @RequestBody Consigne conseils) {
+    public int save(@RequestBody Intervention intervention, @RequestBody Conseils conseils) {
         return conseilsService.save(intervention, conseils);
     }
 }

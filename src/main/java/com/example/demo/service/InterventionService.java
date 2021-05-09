@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -97,7 +96,7 @@ public class InterventionService {
                 interventionCollaborateur.setIntervention(intervention);
                 a = interventionCollaborateurService.save(interventionCollaborateur);
             }
-            for(Consigne conseils : intervention.getConseils()){
+            for(Conseils conseils : intervention.getConseils()){
                 c=conseilsService.save(intervention,conseils);
             }
 

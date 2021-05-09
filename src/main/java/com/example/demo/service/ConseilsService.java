@@ -1,8 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.bean.Collaborateur;
-import com.example.demo.bean.Consigne;
-import com.example.demo.bean.Equipe;
+import com.example.demo.bean.Conseils;
 import com.example.demo.bean.Intervention;
 import com.example.demo.dao.ConseilsDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class ConseilsService {
     private CollaborateurService collaborateurService;
     @Autowired
     private EquipeService equipeService;
-    public List<Consigne> findByCollaborateurCodeCollaborateur(String code) {
+    public List<Conseils> findByCollaborateurCodeCollaborateur(String code) {
         return conseilsDao.findByCollaborateurCodeCollaborateur(code);
     }
 
@@ -28,7 +27,7 @@ public class ConseilsService {
 //        return conseilsDao.findByEquipeRef(ref);
 //    }
 
-    public List<Consigne> findByDateDeMessage(Date date) {
+    public List<Conseils> findByDateDeMessage(Date date) {
         return conseilsDao.findByDateDeMessage(date);
     }
 //
@@ -48,11 +47,11 @@ public class ConseilsService {
         return conseilsDao.deleteByCollaborateurCodeCollaborateur(code);
     }
 
-    public List<Consigne> findAll() {
+    public List<Conseils> findAll() {
         return conseilsDao.findAll();
     }
 
-    public int save(Intervention intervention, Consigne conseils){
+    public int save(Intervention intervention, Conseils conseils){
         Collaborateur collaborateur=collaborateurService.findByCodeCollaborateur(conseils.getCollaborateur().getCodeCollaborateur());
 //        Equipe equipe=equipeService.findByRef(conseils.etEquipe().getRef());
 //        DateTimeFormatter localdate = DateTimeFormatter.ofPattern("dd-MM-YYYY HH:mm:ss");
@@ -63,7 +62,7 @@ public class ConseilsService {
         }
         else
         {
-            Consigne conseil=new Consigne();
+            Conseils conseil=new Conseils();
             conseil.setCollaborateur(collaborateur);
             conseil.setDateDeMessage(conseils.getDateDeMessage());
 //            conseil.setEquipe(equipe);

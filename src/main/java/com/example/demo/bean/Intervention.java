@@ -29,7 +29,7 @@ public class Intervention {
     private List<InterventionCollaborateur> interventionCollaborateur;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy="intervention")
-    private List<Consigne> conseils;
+    private List<Conseils> conseils;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "intervention" )
     private List<MateraialIntervention> materaialInterventions;
@@ -114,11 +114,11 @@ public class Intervention {
         this.materaialInterventions = materaialInterventions;
     }
 
-    public List<Consigne> getConseils() {
+    public List<Conseils> getConseils() {
         return conseils;
     }
 
-    public void setConseils(List<Consigne> conseils) {
+    public void setConseils(List<Conseils> conseils) {
         this.conseils = conseils;
     }
 }
