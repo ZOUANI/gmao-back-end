@@ -45,4 +45,13 @@ public class UserService {
             return -2;
         }
     }
+    public int IsConnected(String login,String password){
+        User isCon=findByLoginAndPassword(login,password);
+        if(isCon == null){
+            return -1;
+        }
+        else{
+            return 2;
+        }
+    }
 }
