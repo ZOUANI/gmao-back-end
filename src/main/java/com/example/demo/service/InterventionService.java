@@ -2,11 +2,15 @@ package com.example.demo.service;
 
 import com.example.demo.bean.*;
 import com.example.demo.dao.InterventionDao;
+import com.example.demo.vo.InterventionVo;
+import com.example.demo.service.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
+import javax.persistence.EntityManager;
 
 @Service
 public class InterventionService {
@@ -26,6 +30,10 @@ public class InterventionService {
     private MateraialInterventionService materaialInterventionService;
     @Autowired
     private ConseilsService conseilsService;
+    @Autowired
+    private InterventionVo interventionVo;
+    @Autowired
+    private  EntityManager entityManager;
 
     public Intervention findByCode(String code) {
         return interventionDao.findByCode(code);
@@ -46,7 +54,23 @@ public class InterventionService {
     public List<Intervention> findAll() {
         return interventionDao.findAll();
     }
+    public List<Intervention> findByCriteria(InterventionVo interventionVo){
+        String query="SELECT o FROM Intervention o WHERE 1=1 ";
+        if(StringUtil.isNotEmpty(interventionVo.getCode()))
+            query+=" AND o.code LIKE '%"+interventionVo.getCode()+"%'";
+         if (interventionVo.getDateDeProbleme()!=null )
+            query+=" AND o.dateDeProbleme = '"+interventionVo.getDateDeProbleme()+"'";
+         if (interventionVo.getDateDebut()!=null )
+            query+=" AND o.dateDebut = '"+interventionVo.getDateDebut()+"'";
+         if (interventionVo.getDateFin()!=null );
+            query+=" AND o.dateFin = '"+interventionVo.getDateFin()+"'";
+        if(StringUtil.isNotEmpty(interventionVo.getDescription()))
+            query+=" AND o.description '%"+interventionVo.getDescription()+"%'";
+        if(StringUtil.isNotEmpty(interventionVo.getLibelle()))
+            query+=" AND o.libelle  '%"+interventionVo.getLibelle()+"%'";
 
+        return entityManager.createQuery(query).getResultList();
+    }
     @Transactional
     public int deleteByCode(String code) {
         return interventionDao.deleteByCode(code);
