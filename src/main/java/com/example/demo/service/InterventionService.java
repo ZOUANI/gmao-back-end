@@ -93,8 +93,7 @@ public class InterventionService {
                 b = materaialInterventionService.save(materaialIntervention);
             }
             for (InterventionMembreEquipe interventionCollaborateur : intervention.getInterventionMembreEquipe()) {
-                interventionCollaborateur.setIntervention(intervention);
-                a = interventionMembreEquipeService.save(interventionCollaborateur);
+                a = interventionMembreEquipeService.save(interventionCollaborateur,intervention);
             }
             for(Conseils conseils : intervention.getConseils()){
                 c=conseilsService.save(intervention,conseils);

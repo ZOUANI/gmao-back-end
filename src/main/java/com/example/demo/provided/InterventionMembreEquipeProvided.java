@@ -1,5 +1,6 @@
 package com.example.demo.provided;
 
+import com.example.demo.bean.Intervention;
 import com.example.demo.bean.InterventionMembreEquipe;
 import com.example.demo.service.InterventionMembreEquipeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class InterventionMembreEquipeProvided {
     }
 
     @PostMapping("/")
-    public int save(@RequestBody InterventionMembreEquipe interventionCollaborateur) {
-        return interventionMembreEquipeService.save(interventionCollaborateur);
+    public int save(@RequestBody InterventionMembreEquipe interventionCollaborateur, Intervention intervention) {
+        return interventionMembreEquipeService.save(interventionCollaborateur,intervention);
     }
 }
