@@ -43,6 +43,14 @@ public class InterventionService {
         return interventionDao.findByDateDeProbleme(dateDeProbleme);
     }
 
+    public List<Intervention> findByEquipeRef(String ref) {
+        return interventionDao.findByInterventionMembreEquipeEquipeRef(ref);
+    }
+
+    public List<Intervention> findByCodeCollaborateur(String code) {
+        return interventionDao.findByInterventionMembreEquipeMembreEquipeCollaborateurCodeCollaborateur(code);
+    }
+
     public List<Intervention> findByDateDebutAndDateFin(String dateDebut, String DateFin) {
         return interventionDao.findByDateDebutAndDateFin(dateDebut, DateFin);
     }

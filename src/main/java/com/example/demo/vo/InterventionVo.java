@@ -7,7 +7,7 @@ import javax.persistence.OneToMany;
 
 import com.example.demo.bean.Conseils;
 import com.example.demo.bean.EtatIntervention;
-import com.example.demo.bean.InterventionCollaborateur;
+//import com.example.demo.bean.InterventionCollaborateur;
 import com.example.demo.bean.MateraialIntervention;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -14,7 +14,7 @@ import java.util.List;
 public class InterventionProvided {
     @Autowired
     private InterventionService interventionService;
-    @GetMapping("findCode/{code}")
+    @GetMapping("/findCode/{code}")
     public Intervention findByCode(@PathVariable String code) {
         return interventionService.findByCode(code);
     }
@@ -22,15 +22,15 @@ public class InterventionProvided {
     public List<Intervention> findByCriteria(@RequestBody InterventionVo interventionVo){
     return  interventionService.findByCriteria(interventionVo);
     }
-    @GetMapping("dateProbleme/{dateDeProbleme}")
+    @GetMapping("/dateProbleme/{dateDeProbleme}")
     public List<Intervention> findByDateDeProbleme(@PathVariable String dateDeProbleme) {
         return interventionService.findByDateDeProbleme(dateDeProbleme);
     }
-    @GetMapping("datedebut/{dateDebut}/datefin/{DateFin}")
+    @GetMapping("/datedebut/{dateDebut}/datefin/{DateFin}")
     public List<Intervention> findByDateDebutAndDateFin(@PathVariable String dateDebut,@PathVariable String DateFin) {
         return interventionService.findByDateDebutAndDateFin(dateDebut, DateFin);
     }
-    @GetMapping("Etatintervention/{etatIntervention}")
+    @GetMapping("/Etatintervention/{etatIntervention}")
     public List<Intervention> findByEtatIntervention(@PathVariable String etatIntervention) {
         return interventionService.findByEtatIntervention(etatIntervention);
     }
@@ -39,12 +39,12 @@ public class InterventionProvided {
         return interventionService.findAll();
     }
 
-    @DeleteMapping("deleteCode/{code}")
+    @DeleteMapping("/deleteCode/{code}")
     public int deleteByCode(@PathVariable String code) {
         return interventionService.deleteByCode(code);
     }
 
-    @DeleteMapping("Etatintervention/{etatIntervention}")
+    @DeleteMapping("/Etatintervention/{etatIntervention}")
     public int deleteByEtatIntervention(@PathVariable String etatIntervention) {
         return interventionService.deleteByEtatIntervention(etatIntervention);
     }
@@ -55,5 +55,13 @@ public class InterventionProvided {
     @PutMapping("/code/{code}")
     public int update(@PathVariable String code,@RequestBody Intervention intervention) {
         return interventionService.update(code, intervention);
+    }
+    @GetMapping("/equiperef/{ref}")
+    public List<Intervention> findByEquipeRef(@PathVariable String ref) {
+        return interventionService.findByEquipeRef(ref);
+    }
+    @GetMapping("/codeCollan/{code}")
+    public List<Intervention> findByCodeCollaborateur(@PathVariable String code) {
+        return interventionService.findByCodeCollaborateur(code);
     }
 }
