@@ -77,7 +77,7 @@ public class InterventionService {
         if (StringUtil.isNotEmpty(interventionVo.getDescription()))
             query += " AND o.description '%" + interventionVo.getDescription() + "%'";
         if (StringUtil.isNotEmpty(interventionVo.getLibelle()))
-            query += " AND o.libelle  '%" + interventionVo.getLibelle() + "%'";
+            query += " AND o.libelle  LIKE '%" + interventionVo.getLibelle() + "%'";
 
         return entityManager.createQuery(query).getResultList();
     }

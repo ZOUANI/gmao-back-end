@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class InterventionMembreEquipeService {
     @Autowired
@@ -37,5 +39,9 @@ public class InterventionMembreEquipeService {
         interventionMembreEquip.setMembreEquipe(membreEquipe);
         interventionCollaborateurDao.save(interventionMembreEquip);
         return 1;
+    }
+
+    public List<InterventionMembreEquipe> findByInterventionCode(String code) {
+        return interventionCollaborateurDao.findByInterventionCode(code);
     }
 }
