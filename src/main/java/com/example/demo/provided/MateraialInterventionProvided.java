@@ -6,6 +6,8 @@ import com.example.demo.service.MateraialInterventionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/MaterialIntervention-api/Materialintervention")
 public class MateraialInterventionProvided {
@@ -23,5 +25,9 @@ public class MateraialInterventionProvided {
     @PostMapping("/")
     public int save(@RequestBody MateraialIntervention materaialIntervention) {
         return materaialInterventionService.save(materaialIntervention);
+    }
+    @GetMapping("/intervcode/{codeIterv}/colabcode/{codeColab}")
+    public List<MateraialIntervention> findByInterventionCodeAndCollaborateurCode(@PathVariable String codeIterv,@PathVariable String codeColab) {
+        return materaialInterventionService.findByInterventionCodeAndCollaborateurCode(codeIterv, codeColab);
     }
 }

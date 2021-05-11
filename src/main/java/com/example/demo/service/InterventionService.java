@@ -43,6 +43,14 @@ public class InterventionService {
         return interventionDao.findByDateDeProbleme(dateDeProbleme);
     }
 
+    public List<Intervention> findByEquipeRef(String ref) {
+        return interventionDao.findByInterventionMembreEquipeEquipeRef(ref);
+    }
+
+    public List<Intervention> findByCodeCollaborateur(String code) {
+        return interventionDao.findByInterventionMembreEquipeMembreEquipeCollaborateurCodeCollaborateur(code);
+    }
+
     public List<Intervention> findByDateDebutAndDateFin(String dateDebut, String DateFin) {
         return interventionDao.findByDateDebutAndDateFin(dateDebut, DateFin);
     }
@@ -69,7 +77,9 @@ public class InterventionService {
         if (StringUtil.isNotEmpty(interventionVo.getDescription()))
             query += " AND o.description '%" + interventionVo.getDescription() + "%'";
         if (StringUtil.isNotEmpty(interventionVo.getLibelle()))
-            query += " AND o.libelle  '%" + interventionVo.getLibelle() + "%'";
+            query += " AND o.libelle  LIKE  '%" + interventionVo.getLibelle() + "%'";
+        if (StringUtil.isNotEmpty(interventionVo.getCouleur()))
+            query += " AND o.etatIntervention.couleur  LIKE  '%" + interventionVo.getCouleur() + "%'";
 
         return entityManager.createQuery(query).getResultList();
     }

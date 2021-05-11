@@ -7,7 +7,7 @@ import javax.persistence.OneToMany;
 
 import com.example.demo.bean.Conseils;
 import com.example.demo.bean.EtatIntervention;
-import com.example.demo.bean.InterventionCollaborateur;
+//import com.example.demo.bean.InterventionCollaborateur;
 import com.example.demo.bean.MateraialIntervention;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,7 +23,16 @@ public class InterventionVo {
 	    private String description;
 	    private String libelle;
 	    private String code;
-	    public Long getId() {
+	    private String couleur;
+
+		public String getCouleur() {
+			return couleur;
+		}
+
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
+	}
+	public Long getId() {
 			return id;
 		}
 		public void setId(Long id) {
