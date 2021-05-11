@@ -23,7 +23,16 @@ public class InterventionVo {
 	    private String description;
 	    private String libelle;
 	    private String code;
-	    public Long getId() {
+	    private String couleur;
+
+		public String getCouleur() {
+			return couleur;
+		}
+
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
+	}
+	public Long getId() {
 			return id;
 		}
 		public void setId(Long id) {

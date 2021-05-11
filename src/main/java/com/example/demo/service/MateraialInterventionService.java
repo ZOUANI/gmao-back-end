@@ -44,6 +44,6 @@ public class MateraialInterventionService {
     }
 
     public List<MateraialIntervention> findByInterventionCodeAndCollaborateurCode(String codeIterv, String codeColab) {
-        return materaialInterventionDao.findByInterventionCodeAndCollaborateurCode(codeIterv, codeColab);
+        return materaialInterventionDao.findByInterventionCodeAndCollaborateurCodeCollaborateur(codeIterv, codeColab);
     }
 }

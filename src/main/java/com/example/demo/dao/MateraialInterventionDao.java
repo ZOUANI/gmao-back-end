@@ -10,6 +10,6 @@ import java.util.List;
 public interface MateraialInterventionDao extends JpaRepository<MateraialIntervention,Long> {
     MateraialIntervention findByMaterialReferenceAndInterventionCode(String reference,String code);
     int deleteByMaterialReferenceAndInterventionCode(String reference,String code);
-    List<MateraialIntervention> findByInterventionCodeAndCollaborateurCode(String codeIterv, String codeColab);
+    List<MateraialIntervention> findByInterventionCodeAndCollaborateurCodeCollaborateur(String codeIterv, String codeColab);
 
 }
