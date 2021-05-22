@@ -7,14 +7,15 @@ import com.example.demo.vo.InterventionVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Intervention-api/intervention")
+@RequestMapping("Gmao/intervention")
 public class InterventionProvided {
     @Autowired
     private InterventionService interventionService;
-    @GetMapping("/findCode/{code}")
+    @GetMapping("/Code/{code}")
     public Intervention findByCode(@PathVariable String code) {
         return interventionService.findByCode(code);
     }
@@ -39,7 +40,7 @@ public class InterventionProvided {
         return interventionService.findAll();
     }
 
-    @DeleteMapping("/deleteCode/{code}")
+    @DeleteMapping("/Code/{code}")
     public int deleteByCode(@PathVariable String code) {
         return interventionService.deleteByCode(code);
     }
@@ -49,7 +50,7 @@ public class InterventionProvided {
         return interventionService.deleteByEtatIntervention(etatIntervention);
     }
     @PostMapping("/")
-    public int save(@RequestBody Intervention intervention) {
+    public int save(@RequestBody Intervention intervention) throws ParseException {
         return interventionService.save(intervention);
     }
     @PutMapping("/code/{code}")

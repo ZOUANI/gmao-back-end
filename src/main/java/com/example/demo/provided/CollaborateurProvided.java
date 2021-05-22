@@ -14,7 +14,7 @@ import com.example.demo.bean.Collaborateur;
 import com.example.demo.service.CollaborateurService;
 
 @RestController
-@RequestMapping("/collaborateur")
+@RequestMapping("Gmao/collaborateur")
 
 
 public class CollaborateurProvided {

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("GMAO/Magasin-api")
+@RequestMapping("Gmao/Magasin-api")
 public class MagasinProvided {
     @Autowired
     private MagasinService magasinService;

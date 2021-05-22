@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RestController
-@RequestMapping("Stock-api/Stockage")
+@RequestMapping("Gmao/Stockage")
 public class StockWs {
     @Autowired
      StockService stockService;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/MaterialIntervention-api/Materialintervention")
+@RequestMapping("Gmao/Materialintervention")
 public class MateraialInterventionProvided {
     @Autowired
     MateraialInterventionService materaialInterventionService;

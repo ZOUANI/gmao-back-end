@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("GMAO/Conseils-api")
+@RequestMapping("Gmao/Conseils-api")
 public class ConseilsProvided {
     @Autowired
     private ConseilsService conseilsService;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("Gmao/Material-api")
+@RequestMapping("Gmao/Material")
 public class MaterialProvided {
     @Autowired
     private MaterialService materialService;

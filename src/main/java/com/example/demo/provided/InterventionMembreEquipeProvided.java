@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Collaborateurintervention-api/Collaborateurintervention")
+@RequestMapping("Gmao/Collaborateurintervention")
 public class InterventionMembreEquipeProvided {
     @Autowired
     InterventionMembreEquipeService interventionMembreEquipeService;

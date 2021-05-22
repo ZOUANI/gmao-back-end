@@ -115,7 +115,7 @@ public class SimpleDb2ExcelExporter {
 
 
     public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    static String[] HEADERs = { "Id", "qte", "MagasinReference", "ProduitReference" };
+    static String[] HEADERs = { "Id", "qte", "magasin", "material" };
     static String SHEET = "Stocks";
 
     public static ByteArrayInputStream StocksToExcel(List<Stock> Stocks) {
