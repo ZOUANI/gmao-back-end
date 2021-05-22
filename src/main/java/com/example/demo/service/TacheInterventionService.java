@@ -11,6 +11,8 @@ import java.util.List;
 @Service
 public class TacheInterventionService {
 
+    private static TacheInterventionService tacheInterventionDao;
+
     public int save(TacheIntervention tacheIntervention) {
         if (findByCode(tacheIntervention.getCode()) != null)
             return -1;
@@ -38,8 +40,8 @@ public class TacheInterventionService {
     public List<TacheIntervention> findAll() {
         return tacheInterventionDao.findAll();
     }
-    @Autowired
-    private TacheInterventionDao tacheInterventionDao;
+  //  @Autowired
+  //  private TacheInterventionDao tacheInterventionDao;
 
     @Autowired
     private EtatTacheService etatTacheService;
