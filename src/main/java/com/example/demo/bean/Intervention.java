@@ -21,7 +21,7 @@ public class Intervention {
     private String description;
     private String libelle;
     private String code;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private EtatIntervention etatIntervention;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

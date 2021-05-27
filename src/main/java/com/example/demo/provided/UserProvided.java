@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("Gmao/User")
+@RequestMapping("Gmao/User-api")
 public class UserProvided {
     @Autowired
     private UserService userService;
