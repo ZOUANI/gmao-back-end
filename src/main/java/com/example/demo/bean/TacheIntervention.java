@@ -2,12 +2,9 @@ package com.example.demo.bean;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
-
+@Entity
 public class TacheIntervention {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -15,7 +12,7 @@ public class TacheIntervention {
     private String libelle;
     private String code;
     private String description;
-    private String EtatTache;
+   // private String EtatTache;
     private Date date;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
@@ -59,17 +56,12 @@ public class TacheIntervention {
         this.description = description;
     }
 
-    public String getEtatTache() {
-        return EtatTache;
-    }
 
     public void setEtatTache(com.example.demo.bean.EtatTache etatTache) {
         this.etatTache = etatTache;
     }
 
-    public void setEtatTache(String etatTache) {
-        EtatTache = etatTache;
-    }
+
 
     public Date getDate() {
         return date;

@@ -1,9 +1,11 @@
 package com.example.demo.bean;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class EtatTache {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -11,6 +13,9 @@ public class EtatTache {
     private String libelle;
     private String code;
     private String description;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "etatTache")
+    private List<TacheIntervention> tacheInterventions;
 
     public Long getId() {
         return id;
