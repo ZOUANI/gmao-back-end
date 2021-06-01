@@ -12,11 +12,11 @@ public class Intervention {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @JsonFormat(pattern = "dd-MM-YYYY")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateDeProbleme;
-    @JsonFormat(pattern = "dd-MM-YYYY")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateDebut;
-    @JsonFormat(pattern = "dd-MM-YYYY")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateFin;
     private String description;
     private String libelle;
