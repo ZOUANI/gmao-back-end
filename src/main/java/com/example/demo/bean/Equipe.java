@@ -13,7 +13,7 @@ public class Equipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ref;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "equipe")
     private List<MembreEquipe> membreEquipe;
     private String libelle;

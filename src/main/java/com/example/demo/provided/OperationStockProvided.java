@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("Gmao/OperationStock")
+@RequestMapping("Stock/OperationStockBean")
 public class OperationStockProvided {
     @PostMapping("/criteria")
     public List<OperationStock> findByCriteria(@RequestBody OperationStockVo operationStockVo) {

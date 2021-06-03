@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("Gmao/etatIntervention")
+@RequestMapping("/EtatIntervention-api/etatIntervention")
 public class EtatInterventionProvided {
     @Autowired
     EtatInterventionService etatInterventionService;

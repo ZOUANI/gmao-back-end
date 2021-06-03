@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("Gmao/membreEquipe")
+@RequestMapping("/membreEquipe")
 public class MembreEquipeProvided {
  @Autowired
  private MembreEquipeService membreEquipeService;
