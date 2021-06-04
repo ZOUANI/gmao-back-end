@@ -47,9 +47,16 @@ public class MembreEquipeService {
         return membreEquipeDao.findAll();
     }
 
-    public int save(Equipe equipe, MembreEquipe membreEquipe) {
-
+    public int save(Equipe equipe, List<MembreEquipe> membres) {
+        for (MembreEquipe membreEquipe : membres) {
+            membreEquipe.setEquipe(equipe);
+            if (membreEquipe.getCollaborateur() != null && membreEquipe.getCollaborateur().getCodeCollaborateur() != null) {
+                membreEquipe.setCollaborateur(collaborateurService.findByCodeCollaborateur(membreEquipe.getCollaborateur().getCodeCollaborateur()));
+            }
+            membreEquipeDao.save(membreEquipe);
+        }
 
         return 0;
     }
+
 }

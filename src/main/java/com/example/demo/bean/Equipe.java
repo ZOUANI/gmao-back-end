@@ -13,9 +13,18 @@ public class Equipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ref;
+
+    public List<MembreEquipe> getMembres() {
+        return membres;
+    }
+
+    public void setMembres(List<MembreEquipe> membres) {
+        this.membres = membres;
+    }
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "equipe")
-    private List<MembreEquipe> membreEquipe;
+    private List<MembreEquipe> membres;
     private String libelle;
     private String code;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -46,13 +55,6 @@ public class Equipe {
         this.id = id;
     }
 
-    public List<MembreEquipe> getMembreEquipe() {
-        return membreEquipe;
-    }
-
-    public void setMembreEquipe(List<MembreEquipe> membreEquipe) {
-        this.membreEquipe = membreEquipe;
-    }
 
     public String getLibelle() {
         return libelle;

@@ -53,11 +53,10 @@ public class EquipeService {
             return -1;
         else {
             equipeDao.save(equipe);
-            for(MembreEquipe membreEquipe:equipe.getMembreEquipe()){
-                membreEquipeService.save(equipe,membreEquipe);
+
+                membreEquipeService.save(equipe,equipe.getMembres());
             }
 
             return 0;
         }
     }
-}
