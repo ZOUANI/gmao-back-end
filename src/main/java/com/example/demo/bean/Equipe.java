@@ -14,6 +14,7 @@ public class Equipe {
     private Long id;
     private String ref;
 
+
     public List<MembreEquipe> getMembres() {
         return membres;
     }
@@ -23,6 +24,7 @@ public class Equipe {
     }
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+
     @OneToMany(mappedBy = "equipe")
     private List<MembreEquipe> membres;
     private String libelle;

@@ -11,10 +11,10 @@ import java.util.List;
 public interface ConseilsDao extends JpaRepository<Conseils,Long> {
     public List<Conseils> findByCollaborateurCodeCollaborateur(String code);
 //    public List<Consigne> findByEquipeRef(String ref);
-    public  List<Conseils> findByDateDeMessage(Date date);
+//    public  List<Conseils> findByDateDeMessage(Date date);
 //    public  List<Consigne> findByEquipeRefAndCollaborateurCodeCollaborateur(String ref, String code);
     public List<Conseils> findAll();
     public void deleteById(Long id);
-    public int deleteByDateDeMessage(Date date);
+//    public int deleteByDateDeMessage(Date date);
     public int deleteByCollaborateurCodeCollaborateur(String code);
 }

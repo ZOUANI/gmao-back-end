@@ -15,8 +15,6 @@ public class Conseils {
 //    @ManyToOne
 //    private Equipe equipe;
     private String message;
-    @JsonFormat(pattern = "dd-MM-YYYY")
-    private Date dateDeMessage;
     @ManyToOne
     private Intervention intervention;
 
@@ -52,13 +50,6 @@ public class Conseils {
         this.message = message;
     }
 
-    public Date getDateDeMessage() {
-        return dateDeMessage;
-    }
-
-    public void setDateDeMessage(Date dateDeMessage) {
-        this.dateDeMessage = dateDeMessage;
-    }
 
     public Intervention getIntervention() {
         return intervention;

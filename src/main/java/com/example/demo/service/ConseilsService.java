@@ -27,10 +27,7 @@ public class ConseilsService {
 //        return conseilsDao.findByEquipeRef(ref);
 //    }
 
-    public List<Conseils> findByDateDeMessage(Date date) {
-        return conseilsDao.findByDateDeMessage(date);
-    }
-//
+
 //    public List<Consigne> findByEquipeRefAndCollaborateurcodeCollaborateur(String ref, String code) {
 //        return conseilsDao.findByEquipeRefAndCollaborateurCodeCollaborateur(ref, code);
 //    }
@@ -38,10 +35,7 @@ public class ConseilsService {
     public void deleteById(Long id) {
         conseilsDao.deleteById(id);
     }
-    @Transactional
-    public int deleteByDateDeMessage(Date date) {
-        return conseilsDao.deleteByDateDeMessage(date);
-    }
+
     @Transactional
     public int deleteByCollaborateurCodeCollaborateur(String code) {
         return conseilsDao.deleteByCollaborateurCodeCollaborateur(code);
@@ -64,7 +58,7 @@ public class ConseilsService {
         {
             Conseils conseil=new Conseils();
             conseil.setCollaborateur(collaborateur);
-            conseil.setDateDeMessage(conseils.getDateDeMessage());
+//            conseil.setDateDeMessage(conseils.getDateDeMessage());
 //            conseil.setEquipe(equipe);
             conseil.setMessage(conseils.getMessage());
             conseil.setIntervention(intervention);
