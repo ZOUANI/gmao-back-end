@@ -84,6 +84,13 @@ public class InterventionService {
         return entityManager.createQuery(query).getResultList();
     }
 
+    public List<Intervention> findByMonth(String month) {
+        String query = "SELECT o FROM Intervention o WHERE  ";
+
+        return null;
+
+    }
+
     @Transactional
     public int deleteByCode(String code) {
         return interventionDao.deleteByCode(code);
