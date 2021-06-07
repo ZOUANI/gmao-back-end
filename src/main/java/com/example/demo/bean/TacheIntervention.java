@@ -56,6 +56,9 @@ public class TacheIntervention {
         this.description = description;
     }
 
+    public EtatTache getEtatTache() {
+        return etatTache;
+    }
 
     public void setEtatTache(com.example.demo.bean.EtatTache etatTache) {
         this.etatTache = etatTache;
