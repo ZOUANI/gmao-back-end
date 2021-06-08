@@ -85,9 +85,9 @@ public class InterventionService {
     }
 
     public List<Intervention> findByMonth(String month) {
-        String query = "SELECT o FROM Intervention o WHERE  ";
-
-        return null;
+        String query = "SELECT o FROM Intervention o WHERE month(dateDebut) = " + month + " and month(dateFin) = "
+                + month;
+        return entityManager.createQuery(query).getResultList();
 
     }
 
