@@ -10,7 +10,6 @@ import java.io.Serializable;
 @Entity
 public class Admin implements Serializable {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -45,7 +44,6 @@ public class Admin implements Serializable {
         this.prenom = prenom;
     }
 
-
     public String getPassword() {
         return password;
     }
@@ -53,8 +51,6 @@ public class Admin implements Serializable {
     public void setPassword(String Password) {
         this.password = Password;
     }
-
-
 
     public String getLogin() {
         return login;

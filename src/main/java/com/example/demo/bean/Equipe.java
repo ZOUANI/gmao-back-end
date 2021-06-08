@@ -23,7 +23,7 @@ public class Equipe {
         this.membres = membres;
     }
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 
     @OneToMany(mappedBy = "equipe")
     private List<MembreEquipe> membres;

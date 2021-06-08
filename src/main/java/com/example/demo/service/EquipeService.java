@@ -19,10 +19,16 @@ public class EquipeService {
 
     @Autowired
     private EquipeDao equipeDao;
+
+    public List<Equipe> findAll() {
+        return equipeDao.findAll();
+    }
+
     @Autowired
     private MembreEquipeService membreEquipeService;
     @Autowired
     private CollaborateurService collaborateurService;
+
     @Transactional
     public int deleteByRef(String ref) {
         return equipeDao.deleteByRef(ref);
@@ -44,19 +50,15 @@ public class EquipeService {
         return equipeDao.findByRef(ref);
     }
 
-    public List<Equipe> findAll() {
-        return equipeDao.findAll();
-    }
-
     public int save(Equipe equipe) {
         if (equipeDao.findByRef(equipe.getRef()) != null)
             return -1;
         else {
             equipeDao.save(equipe);
 
-                membreEquipeService.save(equipe,equipe.getMembres());
-            }
-
-            return 0;
+            membreEquipeService.save(equipe, equipe.getMembres());
         }
+
+        return 0;
     }
+}
