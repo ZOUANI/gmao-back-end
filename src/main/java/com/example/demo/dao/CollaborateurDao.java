@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 public interface CollaborateurDao extends JpaRepository<Collaborateur, Long> {
 
     public Collaborateur findByFullname(String fullname);
+    public Collaborateur findByLogin(String login);
+
+    public Collaborateur findByLoginAndPassword(String login, String password);
 
     public Collaborateur findByCodeCollaborateur(String codeCollaborateur);
 

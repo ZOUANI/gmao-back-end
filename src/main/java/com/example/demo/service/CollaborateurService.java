@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import com.example.demo.bean.Admin;
 import com.example.demo.bean.Collaborateur;
 import com.example.demo.dao.CollaborateurDao;
 
@@ -22,17 +23,37 @@ public class CollaborateurService {
         return collaborateurDao.findByCodeCollaborateur(codeCollaborateur);
     }
 
+    public Collaborateur findByLogin(String login) {
+        return collaborateurDao.findByLogin(login);
+    }
+
+    public Collaborateur findByLoginAndPassword(String login, String password) {
+        return collaborateurDao.findByLoginAndPassword(login, password);
+    }
+
     public List<Collaborateur> findAll() {
         return collaborateurDao.findAll();
     }
 
     public int save(Collaborateur collaborateur) {
-        if (collaborateurDao.findByCodeCollaborateur(collaborateur.getCodeCollaborateur()) != null)
+        if (collaborateurDao.findByLogin(collaborateur.getLogin()) != null) {
             return -1;
+        }
         else {
             collaborateurDao.save(collaborateur);
-            return 0;
+            return 1;
         }
     }
 
+    public Collaborateur signin(Collaborateur collaborateur) {
+        Collaborateur foundedCollaborateur = this.collaborateurDao.findByLogin(collaborateur.getLogin());
+        if(foundedCollaborateur == null){
+            return null;
+        }
+        if (!foundedCollaborateur.getPassword().equals(collaborateur.getPassword())){
+            return null;
+        }else{
+            return foundedCollaborateur;
+        }
+    }
 }
