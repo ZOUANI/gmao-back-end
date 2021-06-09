@@ -47,16 +47,16 @@ public class MembreEquipeService {
         return membreEquipeDao.findAll();
     }
 
-    public int save(Equipe equipe, List<MembreEquipe> membres) {
-        for (MembreEquipe membreEquipe : membres) {
-            membreEquipe.setEquipe(equipe);
-            if (membreEquipe.getCollaborateur() != null && membreEquipe.getCollaborateur().getCodeCollaborateur() != null) {
-                membreEquipe.setCollaborateur(collaborateurService.findByCodeCollaborateur(membreEquipe.getCollaborateur().getCodeCollaborateur()));
-            }
-            membreEquipeDao.save(membreEquipe);
-        }
+    public int save( MembreEquipe membres) {
 
-        return 0;
+            if (membres.getCollaborateur() != null && membres.getCollaborateur().getCodeCollaborateur() != null) {
+                membres.setCollaborateur(collaborateurService.findByCodeCollaborateur(membres.getCollaborateur().getCodeCollaborateur()));
+
+               membreEquipeDao.save(membres);
+        return 0;}
+            else {
+                return -2;
+            }
     }
 
 }

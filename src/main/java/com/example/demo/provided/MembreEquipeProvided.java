@@ -41,8 +41,8 @@ public class MembreEquipeProvided {
  }
 
  @PostMapping("/")
- public int save(@RequestBody Equipe equipe, @RequestBody List<MembreEquipe> membres) {
-  return membreEquipeService.save(equipe, membres);
+ public int save( @RequestBody MembreEquipe membres) {
+  return membreEquipeService.save( membres);
  }
  @GetMapping("/collaborateur/code/{code}")
  public MembreEquipe findByCollaborateurCodeCollaborateur(String code) {

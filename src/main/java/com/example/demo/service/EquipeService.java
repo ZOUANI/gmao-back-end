@@ -54,9 +54,14 @@ public class EquipeService {
         if (equipeDao.findByRef(equipe.getRef()) != null)
             return -1;
         else {
+            membreEquipeService.save(equipe.getChefEquipe());
+            equipe.getChefEquipe().setEquipe(equipe);
             equipeDao.save(equipe);
 
-            membreEquipeService.save(equipe, equipe.getMembres());
+            for (MembreEquipe membreEquipe : equipe.getMembres()) {
+                membreEquipe.setEquipe(equipe);
+                membreEquipeService.save(membreEquipe);
+            }
         }
 
         return 0;
