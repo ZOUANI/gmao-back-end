@@ -4,6 +4,7 @@ import com.example.demo.bean.Intervention;
 import com.example.demo.bean.InterventionMembreEquipe;
 import com.example.demo.service.InterventionMembreEquipeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,5 +32,10 @@ public class InterventionMembreEquipeProvided {
     @GetMapping("/intervcode/{code}")
     public List<InterventionMembreEquipe> findByInterventionCode(@PathVariable String code) {
         return interventionMembreEquipeService.findByInterventionCode(code);
+    }
+
+    @DeleteMapping("CollaborateurCod/{code}/Equipe/{ref}")
+    public int deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(@PathVariable String code,@PathVariable String ref) {
+        return interventionMembreEquipeService.deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(code, ref);
     }
 }

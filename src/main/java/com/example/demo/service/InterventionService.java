@@ -68,12 +68,11 @@ public class InterventionService {
         if (StringUtil.isNotEmpty(interventionVo.getCode()))
             query += " AND o.code LIKE '%" + interventionVo.getCode() + "%'";
         if (interventionVo.getDateDeProbleme() != null)
-            query += " AND o.dateDeProbleme = '" + interventionVo.getDateDeProbleme() + "'";
+            query += " AND o.dateDeProbleme LIKE '%" + interventionVo.getDateDeProbleme() + "%'";
         if (interventionVo.getDateDebut() != null)
-            query += " AND o.dateDebut = '" + interventionVo.getDateDebut() + "'";
+            query += " AND o.dateDebut LIKE '%" + interventionVo.getDateDebut() + "%'";
         if (interventionVo.getDateFin() != null)
-
-            query += " AND o.dateFin = '" + interventionVo.getDateFin() + "'";
+            query += " AND o.dateFin LIKE '%" + interventionVo.getDateFin() + "%'";
         if (StringUtil.isNotEmpty(interventionVo.getDescription()))
             query += " AND o.description '%" + interventionVo.getDescription() + "%'";
         if (StringUtil.isNotEmpty(interventionVo.getLibelle()))

@@ -44,4 +44,8 @@ public class InterventionMembreEquipeService {
     public List<InterventionMembreEquipe> findByInterventionCode(String code) {
         return interventionCollaborateurDao.findByInterventionCode(code);
     }
+    @Transactional
+    public int deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(String code, String ref) {
+        return interventionCollaborateurDao.deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(code, ref);
+    }
 }

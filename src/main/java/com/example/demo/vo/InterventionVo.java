@@ -14,12 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class InterventionVo {
 	 private Long id;
-	    @JsonFormat(pattern = "dd-MM-YYYY")
-	    private Date dateDeProbleme;
-	    @JsonFormat(pattern = "dd-MM-YYYY")
-	    private Date dateDebut;
-	    @JsonFormat(pattern = "dd-MM-YYYY")
-	    private Date dateFin;
+	    private String dateDeProbleme;
+	    private String dateDebut;
+	    private String dateFin;
 	    private String description;
 	    private String libelle;
 	    private String code;
@@ -38,22 +35,22 @@ public class InterventionVo {
 		public void setId(Long id) {
 			this.id = id;
 		}
-		public Date getDateDeProbleme() {
+		public String getDateDeProbleme() {
 			return dateDeProbleme;
 		}
-		public void setDateDeProbleme(Date dateDeProbleme) {
+		public void setDateDeProbleme(String dateDeProbleme) {
 			this.dateDeProbleme = dateDeProbleme;
 		}
-		public Date getDateDebut() {
+		public String getDateDebut() {
 			return dateDebut;
 		}
-		public void setDateDebut(Date dateDebut) {
+		public void setDateDebut(String dateDebut) {
 			this.dateDebut = dateDebut;
 		}
-		public Date getDateFin() {
+		public String getDateFin() {
 			return dateFin;
 		}
-		public void setDateFin(Date dateFin) {
+		public void setDateFin(String dateFin) {
 			this.dateFin = dateFin;
 		}
 		public String getDescription() {
