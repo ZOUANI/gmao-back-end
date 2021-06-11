@@ -40,8 +40,8 @@ public class ConseilsService {
     }
 
     @Transactional
-    public int deleteByCollaborateurCodeCollaborateur(String code,String message) {
-        return conseilsDao.deleteByCollaborateurCodeCollaborateurAndMessage(code,message);
+    public int deleteByCollaborateurCodeCollaborateur(String code,String message,String interv) {
+        return conseilsDao.deleteByCollaborateurCodeCollaborateurAndMessageAndInterventionCode(code,message,interv);
     }
 
     public List<Conseils> findAll() {

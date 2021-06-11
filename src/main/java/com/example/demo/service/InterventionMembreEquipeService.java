@@ -45,7 +45,7 @@ public class InterventionMembreEquipeService {
         return interventionCollaborateurDao.findByInterventionCode(code);
     }
     @Transactional
-    public int deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(String code, String ref) {
-        return interventionCollaborateurDao.deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(code, ref);
+    public int deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(String code, String ref, String interv) {
+        return interventionCollaborateurDao.deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRefAndInterventionCode(code, ref,interv);
     }
 }

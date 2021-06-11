@@ -24,4 +24,5 @@ public class EtatInterventionService {
     public int deleteByCode(String code) {
         return etatInterventionDao.deleteByCode(code);
     }
+
 }

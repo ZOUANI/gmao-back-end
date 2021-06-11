@@ -34,8 +34,8 @@ public class InterventionMembreEquipeProvided {
         return interventionMembreEquipeService.findByInterventionCode(code);
     }
 
-    @DeleteMapping("CollaborateurCod/{code}/Equipe/{ref}")
-    public int deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(@PathVariable String code,@PathVariable String ref) {
-        return interventionMembreEquipeService.deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(code, ref);
+    @DeleteMapping("CollaborateurCod/{code}/Equipe/{ref}/interv/{interv}")
+    public int deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(@PathVariable String code,@PathVariable String ref,@PathVariable String interv) {
+        return interventionMembreEquipeService.deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRef(code, ref,interv);
     }
 }

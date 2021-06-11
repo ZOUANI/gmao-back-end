@@ -103,15 +103,11 @@ public class InterventionService {
     public int update(String code, Intervention intervention) {
         Intervention interventions = findByCode(code);
         if (interventions != null) {
-            if (intervention.getEtatIntervention() != null)
-                interventions.setEtatIntervention(intervention.getEtatIntervention());
-            if (intervention.getInterventionMembreEquipe() != null)
-                interventions.setInterventionMembreEquipe(intervention.getInterventionMembreEquipe());
-            if (intervention.getMateraialInterventions() != null)
-                interventions.setMateraialInterventions(intervention.getMateraialInterventions());
+            interventions.setEtatIntervention(intervention.getEtatIntervention());
+            interventions.setInterventionMembreEquipe(intervention.getInterventionMembreEquipe());
+            interventions.setMateraialInterventions(intervention.getMateraialInterventions());
             interventions.setCode(intervention.getCode());
-            if (intervention.getConseils() != null)
-                interventions.setConseils(intervention.getConseils());
+            interventions.setConseils(intervention.getConseils());
             interventions.setDateDebut(intervention.getDateDebut());
             interventions.setDateDeProbleme(intervention.getDateDeProbleme());
             interventions.setDateFin(intervention.getDateFin());

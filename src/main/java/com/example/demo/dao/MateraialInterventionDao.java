@@ -13,6 +13,6 @@ public interface MateraialInterventionDao extends JpaRepository<MateraialInterve
     int deleteByMaterialReferenceAndInterventionCode(String reference,String code);
     List<MateraialIntervention> findByInterventionCodeAndCollaborateurCodeCollaborateur(String codeIterv, String codeColab);
     List<MateraialIntervention> findByInterventionCode(String code);
-    int deleteByMaterialReferenceAndMagasinReference(String reference,String ref);
+    int deleteByMaterialReferenceAndMagasinReferenceAndInterventionCode(String reference,String ref,String code);
 
 }

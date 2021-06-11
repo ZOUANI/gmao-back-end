@@ -19,9 +19,9 @@ public class MateraialInterventionProvided {
         return materaialInterventionService.findByMaterialReferenceAndInterventionCode(reference, code);
     }
 
-    @DeleteMapping("material/{reference}/Mag/{ref}")
-    public int deleteByMaterialReferenceAndMagasinReference(@PathVariable String reference,@PathVariable String ref) {
-        return materaialInterventionService.deleteByMaterialReferenceAndMagasinReference(reference, ref);
+    @DeleteMapping("material/{reference}/Mag/{ref}/interv/{code}")
+    public int deleteByMaterialReferenceAndMagasinReference(@PathVariable String reference,@PathVariable String ref,@PathVariable String code) {
+        return materaialInterventionService.deleteByMaterialReferenceAndMagasinReference(reference, ref,code);
     }
 
     @DeleteMapping("deleteref/{reference}/deletecode/{code}")
