@@ -30,6 +30,10 @@ public class ConseilsProvided {
 //    public List<Consigne> findByEquipeRefAndCollaborateurcodeCollaborateur(@PathVariable String ref, @PathVariable  String code) {
 //        return conseilsService.findByEquipeRefAndCollaborateurcodeCollaborateur(ref, code);
 //    }
+    @GetMapping("intervention/{code}")
+    public List<Conseils> findByInterventionCode(@PathVariable String code) {
+        return conseilsService.findByInterventionCode(code);
+    }
 
     @DeleteMapping("id/{id}")
     public void deleteById(@PathVariable Long id) {

@@ -23,7 +23,10 @@ public class ConseilsService {
         return conseilsDao.findByCollaborateurCodeCollaborateur(code);
     }
 
-//    public List<Consigne> findByEquipeRef(String ref) {
+    public List<Conseils> findByInterventionCode(String code) {
+        return conseilsDao.findByInterventionCode(code);
+    }
+    //    public List<Consigne> findByEquipeRef(String ref) {
 //        return conseilsDao.findByEquipeRef(ref);
 //    }
 
