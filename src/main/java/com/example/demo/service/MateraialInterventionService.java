@@ -25,6 +25,15 @@ public class MateraialInterventionService {
     public int deleteByMaterialReferenceAndInterventionCode(String reference, String code) {
         return materaialInterventionDao.deleteByMaterialReferenceAndInterventionCode(reference, code);
     }
+    @Transactional
+    public int deleteByMaterialReferenceAndMagasinReference(String reference, String ref) {
+        return materaialInterventionDao.deleteByMaterialReferenceAndMagasinReference(reference, ref);
+    }
+
+    public List<MateraialIntervention> findByInterventionCode(String code) {
+        return materaialInterventionDao.findByInterventionCode(code);
+    }
+
     public int save(MateraialIntervention materaialIntervention){
 //        materaialIntervention.setIntervention(intervention);
         Magasin magasin=magasinService.findByReference(materaialIntervention.getMagasin().getReference());
