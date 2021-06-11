@@ -45,9 +45,9 @@ public class ConseilsProvided {
 //        return conseilsService.deleteByDateDeMessage(date);
 //    }
 
-    @DeleteMapping("code/{code}")
-    public int deleteByCollaborateurCodeCollaborateur(@PathVariable String code) {
-        return conseilsService.deleteByCollaborateurCodeCollaborateur(code);
+    @DeleteMapping("code/{code}/message/{message}")
+    public int deleteByCollaborateurCodeCollaborateur(@PathVariable String code,@PathVariable String message) {
+        return conseilsService.deleteByCollaborateurCodeCollaborateur(code,message);
     }
     @GetMapping("/")
     public List<Conseils> findAll() {
