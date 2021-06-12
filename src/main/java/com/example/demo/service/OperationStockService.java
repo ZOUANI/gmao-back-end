@@ -33,7 +33,8 @@ public class OperationStockService {
         Optional<OperationStock> operationStock1=findById(id);
         if (operationStock1!=null)
         {
-            operationStock1.get().setMaterial(operationStock.getMaterial());
+            Material material=materialService.findByReference(operationStock.getMaterial().getReference());
+            operationStock1.get().setMaterial(material);
             operationStock1.get().setQte(operationStock.getQte());
             operationStock1.get().setMagasinDestination(operationStock.getMagasinDestination());
             operationStock1.get().setMagasinSource(operationStock.getMagasinSource());
