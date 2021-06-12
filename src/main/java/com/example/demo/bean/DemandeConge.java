@@ -21,7 +21,8 @@ public class DemandeConge implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String code;
-    private String collaborateur;
+    @ManyToOne
+    private Collaborateur collaborateur;
     private String action;
     private String dateDepart;
     private String dateFin;
@@ -50,11 +51,11 @@ public class DemandeConge implements Serializable {
         this.code = code;
     }
 
-    public String getCollaborateur() {
+    public Collaborateur getCollaborateur() {
         return collaborateur;
     }
 
-    public void setCollaborateur(String collaborateur) {
+    public void setCollaborateur(Collaborateur collaborateur) {
         this.collaborateur = collaborateur;
     }
 

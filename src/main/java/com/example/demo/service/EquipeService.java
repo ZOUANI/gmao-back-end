@@ -59,9 +59,11 @@ public class EquipeService {
             membreEquipeService.save(equipe.getChefEquipe());
             equipe.getChefEquipe().setEquipe(equipe);
             equipeDao.save(equipe);
-
+            MembreEquipe chefequipe=membreEquipeService.findByCollaborateurCodeCollaborateur(equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur());
             for (MembreEquipe membreEquipe : equipe.getMembres()) {
                 membreEquipe.setEquipe(equipe);
+                if(chefequipe!=null)
+                    continue;
                 membreEquipeService.save(membreEquipe);
             }
         }

@@ -42,13 +42,11 @@ public class DemandeCongeService {
         if(demandeCongeDao.findByCode(demandeConge.getCode())!=null){
             return  -3;
         }else{
-            EtatDemandeConge etatDemandeConge = etatDemandeCongeService.findByCode(demandeConge.getEtatDemandeConge().getCode());
-            Collaborateur collaborateur= collaborateurService.findByCodeCollaborateur(demandeConge.getCollaborateur());
-            if(etatDemandeConge == null || collaborateur == null){
+            Collaborateur collaborateur= collaborateurService.findByCodeCollaborateur(demandeConge.getCollaborateur().getCodeCollaborateur());
+            if( collaborateur == null){
                 return -1;
             }else{
-//                demandeConge.setCollaborateur(collaborateur);
-                demandeConge.setEtatDemandeConge(etatDemandeConge);
+                demandeConge.setCollaborateur(collaborateur);
                 demandeCongeDao.save(demandeConge);
                 return 1;
             }
