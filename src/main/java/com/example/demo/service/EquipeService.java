@@ -62,7 +62,7 @@ public class EquipeService {
             MembreEquipe chefequipe=membreEquipeService.findByCollaborateurCodeCollaborateur(equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur());
             for (MembreEquipe membreEquipe : equipe.getMembres()) {
                 membreEquipe.setEquipe(equipe);
-                if(chefequipe!=null)
+                if(equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur().equals(membreEquipe.getCollaborateur().getCodeCollaborateur()))
                     continue;
                 membreEquipeService.save(membreEquipe);
             }
