@@ -88,8 +88,9 @@ public class EquipeService {
             for (MembreEquipe membres : equipe.getMembres()) {
                 MembreEquipe membreEquipe = membreEquipeService.findByCollaborateurCodeCollaborateur(membres.getCollaborateur().getCodeCollaborateur());
                 membres.setEquipe(equipe1);
-                if(chefEquipe!=null)
-                    membreEquipeService.save(membres);
+                if(equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur().equals(membreEquipe.getCollaborateur().getCodeCollaborateur()))
+                    continue;
+                membreEquipeService.save(membres);
                 membreEquipeList.add(membreEquipe);
             }
             equipe1.setMembres(membreEquipeList);
