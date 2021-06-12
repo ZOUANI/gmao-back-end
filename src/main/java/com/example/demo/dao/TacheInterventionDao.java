@@ -1,24 +1,17 @@
 package com.example.demo.dao;
 
-import com.example.demo.bean.EtatTache;
 import com.example.demo.bean.TacheIntervention;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
+@Repository
 public interface TacheInterventionDao extends JpaRepository<TacheIntervention,Long> {
-    TacheIntervention findByCode(String code);
-    TacheIntervention findByLibelle(String libelle);
-    TacheIntervention findByDescription(String description);
-
-    List<TacheIntervention> findByEtatTacheDescription(String description);
-    List<TacheIntervention> deleteByEtatTacheDescription(String description);
-
-    List<TacheIntervention> findByEtatTacheLibelle(String libelle);
-    List<TacheIntervention> deleteByEtatTacheLibelle(String libelle);
-
-    List<TacheIntervention> findByEtatTacheCode(String code);
-    List<TacheIntervention> deleteByEtatTacheCode(String code);
-
-
+    public int deleteByCode(String code);
+    public  TacheIntervention findByCode(String code);
+    public List<TacheIntervention>  findByMembreEquipeCollaborateurCodeCollaborateur(String codeCollaborateur);
+    public List<TacheIntervention>  findByInterventionCode(String code);
+    public List<TacheIntervention>  findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(String codeCollaborateur, String codeIntervention);
 }

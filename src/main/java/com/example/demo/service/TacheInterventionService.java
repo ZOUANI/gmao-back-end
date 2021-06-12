@@ -1,7 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.EtatTache;
-import com.example.demo.bean.TacheIntervention;
+import com.example.demo.bean.*;
+import com.example.demo.dao.InterventionMembreEquipeDao;
+import com.example.demo.dao.MembreEquipeDao;
 import com.example.demo.dao.TacheInterventionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,38 +12,104 @@ import java.util.List;
 @Service
 public class TacheInterventionService {
 
-    private static TacheInterventionService tacheInterventionDao;
+    @Autowired
+    private TacheInterventionDao tacheInterventionDao;
+    @Autowired
+    private InterventionService interventionService;
+    @Autowired
+    private InterventionMembreEquipeDao interventionMembreEquipeDao;
 
-    public int save(TacheIntervention tacheIntervention) {
-        if (findByCode(tacheIntervention.getCode()) != null)
-            return -1;
-        else {
+    @Autowired
+    private MembreEquipeDao membreEquipeDao;
 
-            EtatTache etatTache = null;
-            etatTacheService.update(etatTache);
-          //  TacheIntervention tacheIntervention = null;
-            tacheInterventionDao.save(tacheIntervention);
-            return 1;
-        }
+    public int deleteByCode(String code) {
+        return tacheInterventionDao.deleteByCode(code);
     }
+
     public TacheIntervention findByCode(String code) {
         return tacheInterventionDao.findByCode(code);
     }
 
-    public List<TacheIntervention> findByEtatTacheCode(String code) {
-        return tacheInterventionDao.findByEtatTacheCode(code);
+    public List<TacheIntervention> findByMembreEquipeCollaborateurCodeCollaborateur(String codeCollaborateur) {
+        return tacheInterventionDao.findByMembreEquipeCollaborateurCodeCollaborateur(codeCollaborateur);
     }
 
-    public static List<TacheIntervention> deleteByEtatTacheCode(String code) {
-        return tacheInterventionDao.deleteByEtatTacheCode(code);
+    public List<TacheIntervention> findByInterventionCode(String code) {
+        return tacheInterventionDao.findByInterventionCode(code);
+    }
+
+    public List<TacheIntervention> findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(String codeCollaborateur, String codeIntervention) {
+        return tacheInterventionDao.findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(codeCollaborateur, codeIntervention);
     }
 
     public List<TacheIntervention> findAll() {
         return tacheInterventionDao.findAll();
     }
-  //  @Autowired
-  //  private TacheInterventionDao tacheInterventionDao;
 
-    @Autowired
-    private EtatTacheService etatTacheService;
+    public boolean verifierAppartenance(String codeIntervention,String codeMembre){
+        InterventionMembreEquipe x = interventionMembreEquipeDao
+                .findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(codeMembre,codeIntervention);
+        MembreEquipe y = membreEquipeDao.findByCollaborateurCodeCollaborateur(codeMembre);
+        Intervention z = interventionService.findByCode(codeIntervention);
+
+        return x == null || y == null || z == null;
+
+    }
+
+    public int save( TacheIntervention tacheIntervention) {
+        MembreEquipe membreEquipe = membreEquipeDao.findByCollaborateurCodeCollaborateur(
+                tacheIntervention
+                        .getMembreEquipe()
+                        .getCollaborateur()
+                        .getCodeCollaborateur()
+        );
+        Intervention intervention = interventionService.findByCode(
+                tacheIntervention
+                        .getIntervention()
+                        .getCode()
+        );
+
+        if(verifierAppartenance(
+                tacheIntervention
+                        .getIntervention()
+                        .getCode(),
+                tacheIntervention
+                        .getMembreEquipe()
+                        .getCollaborateur()
+                        .getCodeCollaborateur()
+        )
+        )
+            return -1;
+        else{
+            try{
+                tacheIntervention.setIntervention(intervention);
+                tacheIntervention.setEtatTache(false);
+                tacheIntervention.setMembreEquipe(membreEquipe);
+                return 1;
+            }catch(Exception e){
+                return -2;
+            }
+        }
+    }
+    public int completerTache(String codeTache){
+        TacheIntervention tacheIntervention = tacheInterventionDao.findByCode(codeTache);
+        if(tacheIntervention == null)
+            return -1;
+        else if(verifierAppartenance(tacheIntervention.getIntervention().getCode(),
+                tacheIntervention.getMembreEquipe().getCollaborateur().getCodeCollaborateur()))
+            return -2;
+        else{
+            try{
+                tacheIntervention.setEtatTache(true);
+                tacheInterventionDao.save(tacheIntervention);
+                return 1;
+            }
+            catch(Exception e){
+                return -3;
+            }
+
+        }
+    }
+
+
 }

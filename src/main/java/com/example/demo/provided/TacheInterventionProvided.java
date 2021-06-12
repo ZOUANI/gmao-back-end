@@ -8,8 +8,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value ="code/tacheIntervention")
+@RequestMapping(value ="/tacheIntervention")
 public class TacheInterventionProvided {
+
+    @Autowired
+    private TacheInterventionService tacheInterventionService;
+
+    @GetMapping("/collaborateur/{codeCollaborateur}/intervention/{codeIntervention}")
+    public List<TacheIntervention> findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(@PathVariable String codeCollaborateur,@PathVariable String codeIntervention) {
+        return tacheInterventionService.findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(codeCollaborateur, codeIntervention);
+    }
+
+    @GetMapping("/code/{code}")
+    public int completerTache(@PathVariable String code) {
+        return tacheInterventionService.completerTache(code);
+    }
 
     @PostMapping("/")
     public int save(@RequestBody TacheIntervention tacheIntervention) {
@@ -20,21 +33,11 @@ public class TacheInterventionProvided {
     public TacheIntervention findByCode(@PathVariable String code) {
         return tacheInterventionService.findByCode(code);
     }
-    @GetMapping("/EtatTache/code/{Code}")
-    public List<TacheIntervention> findByEtatTacheCode(@PathVariable String code) {
-        return tacheInterventionService.findByEtatTacheCode(code);
-    }
-
-    @DeleteMapping("/code/{code}")
-    public static List<TacheIntervention> deleteByEtatTacheCode(@PathVariable String code) {
-        return TacheInterventionService.deleteByEtatTacheCode(code);
-    }
 
     @GetMapping("/")
     public List<TacheIntervention> findAll() {
         return tacheInterventionService.findAll();
     }
 
-    @Autowired
-    private TacheInterventionService tacheInterventionService;
+
 }

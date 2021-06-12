@@ -9,10 +9,9 @@ public class TacheIntervention {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    private String libelle;
     private String code;
     private String description;
-   // private String EtatTache;
+    private Boolean EtatTache;
     private Date date;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
@@ -20,9 +19,7 @@ public class TacheIntervention {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Intervention intervention;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ManyToOne
-    private EtatTache etatTache;
+
 
     public Long getId() {
         return id;
@@ -30,14 +27,6 @@ public class TacheIntervention {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
     }
 
     public String getCode() {
@@ -56,15 +45,13 @@ public class TacheIntervention {
         this.description = description;
     }
 
-    public EtatTache getEtatTache() {
-        return etatTache;
+    public Boolean getEtatTache() {
+        return EtatTache;
     }
 
-    public void setEtatTache(com.example.demo.bean.EtatTache etatTache) {
-        this.etatTache = etatTache;
+    public void setEtatTache(Boolean etatTache) {
+        EtatTache = etatTache;
     }
-
-
 
     public Date getDate() {
         return date;
