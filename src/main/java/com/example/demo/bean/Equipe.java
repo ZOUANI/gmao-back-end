@@ -29,7 +29,7 @@ public class Equipe {
     private List<MembreEquipe> membres;
     private String libelle;
     private String code;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToOne
     private MembreEquipe chefEquipe;
 
