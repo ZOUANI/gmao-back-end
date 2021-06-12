@@ -59,7 +59,6 @@ public class EquipeService {
             membreEquipeService.save(equipe.getChefEquipe());
             equipe.getChefEquipe().setEquipe(equipe);
             equipeDao.save(equipe);
-            MembreEquipe chefequipe=membreEquipeService.findByCollaborateurCodeCollaborateur(equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur());
             for (MembreEquipe membreEquipe : equipe.getMembres()) {
                 membreEquipe.setEquipe(equipe);
                 if(equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur().equals(membreEquipe.getCollaborateur().getCodeCollaborateur()))
