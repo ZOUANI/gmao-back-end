@@ -46,5 +46,10 @@ public class OperationStockProvided {
     public int transferer(@RequestBody OperationStock operationStock) {
         return operationStockService.transferer(operationStock);
     }
+    @PutMapping("/update/{id}")
+    public int update(@PathVariable Long id,@RequestBody OperationStock operationStock){
+        return operationStockService.update(id,operationStock);
+    }
+
 
 }

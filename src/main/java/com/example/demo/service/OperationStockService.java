@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OperationStockService {
@@ -28,6 +29,24 @@ public class OperationStockService {
     private MaterialService materialService;
     @Autowired
     private EntityManager entityManager;
+    public int update (Long id,OperationStock operationStock){
+        Optional<OperationStock> operationStock1=findById(id);
+        if (operationStock1!=null)
+        {
+            operationStock1.get().setMaterial(operationStock.getMaterial());
+            operationStock1.get().setQte(operationStock.getQte());
+            operationStock1.get().setMagasinDestination(operationStock.getMagasinDestination());
+            operationStock1.get().setMagasinSource(operationStock.getMagasinSource());
+            operationStockDao.save(operationStock1.get());
+            return 1;
+        }
+        else
+            return -2;
+    }
+
+    public Optional<OperationStock> findById(Long id) {
+        return operationStockDao.findById(id);
+    }
 
     public List<OperationStock> findByCriteria(OperationStockVo operationStockVo){
         String query="SELECT o FROM OperationStock o WHERE 1=1 ";
