@@ -17,4 +17,5 @@ public interface OperationStockDao extends JpaRepository<OperationStock,Long> {
     List<OperationStock> findAll();
     List<OperationStock> findByMaterialReference(String refMaterial);
     Optional<OperationStock> findById(Long id);
+    void deleteById(Long id);
 }

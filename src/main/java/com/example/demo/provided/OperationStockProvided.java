@@ -4,9 +4,11 @@ import com.example.demo.service.OperationStockService;
 import com.example.demo.bean.OperationStock;
 import com.example.demo.vo.OperationStockVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("Stock/OperationStockBean")
@@ -52,4 +54,9 @@ public class OperationStockProvided {
     }
 
 
+
+    @DeleteMapping("/idde/{id}")
+    public void deleteById(@PathVariable Long id) {
+        operationStockService.deleteById(id);
+    }
 }
