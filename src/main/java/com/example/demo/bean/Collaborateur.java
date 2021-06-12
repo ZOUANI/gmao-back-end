@@ -47,7 +47,7 @@ public class Collaborateur {
         this.login = login;
     }
 
-    public double getId() {
+    public Long getId() {
         return id;
     }
 
