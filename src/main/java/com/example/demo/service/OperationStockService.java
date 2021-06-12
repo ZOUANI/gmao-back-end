@@ -36,8 +36,8 @@ public class OperationStockService {
             Material material=materialService.findByReference(operationStock.getMaterial().getReference());
             operationStock1.get().setMaterial(material);
             operationStock1.get().setQte(operationStock.getQte());
-            operationStock1.get().setMagasinDestination(operationStock.getMagasinDestination());
-            operationStock1.get().setMagasinSource(operationStock.getMagasinSource());
+            operationStock1.get().setMagasinDestination(magasinService.findByReference(operationStock.getMagasinDestination().getReference()));
+            operationStock1.get().setMagasinSource(magasinService.findByReference(operationStock.getMagasinSource().getReference()));
             operationStockDao.save(operationStock1.get());
             return 1;
         }
