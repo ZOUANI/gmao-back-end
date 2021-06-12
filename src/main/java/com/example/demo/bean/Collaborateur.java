@@ -15,6 +15,7 @@ public class Collaborateur {
     private String password;
     private String email;
 
+
     public String getLogin() {
         return login;
     }
