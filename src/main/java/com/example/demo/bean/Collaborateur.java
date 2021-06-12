@@ -15,6 +15,7 @@ public class Collaborateur {
     private String password;
     private String email;
 
+
     public String getLogin() {
         return login;
     }
@@ -47,7 +48,7 @@ public class Collaborateur {
         this.login = login;
     }
 
-    public double getId() {
+    public Long getId() {
         return id;
     }
 

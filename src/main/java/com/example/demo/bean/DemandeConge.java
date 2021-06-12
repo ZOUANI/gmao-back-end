@@ -21,72 +21,17 @@ public class DemandeConge implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String code;
-    @ManyToOne
-    private Collaborateur collaborateur;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateDepart;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateFin;
+    private String collaborateur;
+    private String action;
+    private String dateDepart;
+    private String dateFin;
     private String messageCollaborateur;
-    private String commentaireValidateur;
+    //    private String commentaireValidateur;
     @ManyToOne
     private EtatDemandeConge etatDemandeConge;
 
-    public Collaborateur getCollaborateur() {
-        if (collaborateur == null) {
-            collaborateur = new Collaborateur();
-        }
-        return collaborateur;
-    }
-
-    public void setCollaborateur(Collaborateur collaborateur) {
-        this.collaborateur = collaborateur;
-    }
-
-    public Date getDateDepart() {
-        return dateDepart;
-    }
-
-    public void setDateDepart(Date dateDepart) {
-        this.dateDepart = dateDepart;
-    }
-
-    public Date getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
-    }
-
-    public String getMessageCollaborateur() {
-        return messageCollaborateur;
-    }
-
-    public void setMessageCollaborateur(String messageCollaborateur) {
-        this.messageCollaborateur = messageCollaborateur;
-    }
-    public String getCode(){
-        return code;
-    }
-    public void setCode(String code){
-        this.code = code;
-    }
-
-    public String getCommentaireValidateur() {
-        return commentaireValidateur;
-    }
-
-    public void setCommentaireValidateur(String commentaireValidateur) {
-        this.commentaireValidateur = commentaireValidateur;
-    }
-
-    public EtatDemandeConge getEtatDemandeConge() {
-        return etatDemandeConge;
-    }
-
-    public void setEtatDemandeConge(EtatDemandeConge etatDemandeConge) {
-        this.etatDemandeConge = etatDemandeConge;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Long getId() {
@@ -97,29 +42,64 @@ public class DemandeConge implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public String getCode() {
+        return code;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DemandeConge)) {
-            return false;
-        }
-        DemandeConge other = (DemandeConge) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    @Override
-    public String toString() {
-        return "com.telcom.rh.bean.DemandeConge[ id=" + id + " ]";
+    public String getCollaborateur() {
+        return collaborateur;
     }
+
+    public void setCollaborateur(String collaborateur) {
+        this.collaborateur = collaborateur;
+    }
+
+    public String getDateDepart() {
+        return dateDepart;
+    }
+
+    public void setDateDepart(String dateDepart) {
+        this.dateDepart = dateDepart;
+    }
+
+    public String getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(String dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public String getMessageCollaborateur() {
+        return messageCollaborateur;
+    }
+
+    public void setMessageCollaborateur(String messageCollaborateur) {
+        this.messageCollaborateur = messageCollaborateur;
+    }
+
+    public EtatDemandeConge getEtatDemandeConge() {
+        return etatDemandeConge;
+    }
+
+    public void setEtatDemandeConge(EtatDemandeConge etatDemandeConge) {
+        this.etatDemandeConge = etatDemandeConge;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
 
 }
+
+
+

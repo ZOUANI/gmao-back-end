@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("maneo-rh/conge")
+@RequestMapping("/conge")
 public class DemandeCongeProvided {
     @GetMapping("/id/{id}")
     public Optional<DemandeConge> findById(Long id) {
@@ -28,7 +28,7 @@ public class DemandeCongeProvided {
     }
 
     @PostMapping("/")
-    public DemandeConge save(@RequestBody  DemandeConge demandeConge) {
+    public int save(@RequestBody  DemandeConge demandeConge) {
         return demandeCongeService.save(demandeConge);
     }
 
