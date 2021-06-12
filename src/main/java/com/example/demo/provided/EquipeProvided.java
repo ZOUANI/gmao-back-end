@@ -6,13 +6,7 @@ import com.example.demo.bean.Equipe;
 import com.example.demo.service.EquipeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/equipe")
@@ -56,4 +50,8 @@ public class EquipeProvided {
   return equipeService.save(equipe);
  }
 
+ @PutMapping("/ref/{ref}")
+ public int update(@PathVariable String ref,@RequestBody Equipe equipe) {
+  return equipeService.update(ref, equipe);
+ }
 }

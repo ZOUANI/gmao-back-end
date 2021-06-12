@@ -51,7 +51,6 @@ public class MembreEquipeService {
 
             if (membres.getCollaborateur() != null && membres.getCollaborateur().getCodeCollaborateur() != null) {
                 membres.setCollaborateur(collaborateurService.findByCodeCollaborateur(membres.getCollaborateur().getCodeCollaborateur()));
-
                membreEquipeDao.save(membres);
         return 0;}
             else {

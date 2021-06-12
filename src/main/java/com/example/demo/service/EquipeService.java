@@ -9,6 +9,8 @@ import com.example.demo.bean.Collaborateur;
 import com.example.demo.bean.Equipe;
 import com.example.demo.bean.MembreEquipe;
 import com.example.demo.dao.EquipeDao;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,5 +67,34 @@ public class EquipeService {
         }
 
         return 0;
+    }
+
+    public int update(String ref, Equipe equipe) {
+        Equipe equipe1 = findByRef(ref);
+        if (equipe1 != null) {
+            equipe1.setRef(equipe.getRef());
+            equipe1.setLibelle(equipe.getLibelle());
+            equipe1.setCode(equipe.getCode());
+            MembreEquipe chefEquipe = membreEquipeService.findByCollaborateurCodeCollaborateur(equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur());
+            if(chefEquipe==null){
+                membreEquipeService.save(equipe.getChefEquipe());
+            }
+            equipe.getChefEquipe().setEquipe(equipe1);
+            equipe1.setChefEquipe(equipe.getChefEquipe());
+            List<MembreEquipe> membreEquipeList = new ArrayList<>();
+            equipeDao.save(equipe1);
+            for (MembreEquipe membres : equipe.getMembres()) {
+                MembreEquipe membreEquipe = membreEquipeService.findByCollaborateurCodeCollaborateur(membres.getCollaborateur().getCodeCollaborateur());
+                membres.setEquipe(equipe1);
+                if(chefEquipe!=null)
+                    membreEquipeService.save(membres);
+                membreEquipeList.add(membreEquipe);
+            }
+            equipe1.setMembres(membreEquipeList);
+
+            return 1;
+        } else {
+            return -2;
+        }
     }
 }
