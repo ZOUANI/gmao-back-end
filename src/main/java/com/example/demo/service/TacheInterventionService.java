@@ -50,7 +50,7 @@ public class TacheInterventionService {
         InterventionMembreEquipe x = interventionMembreEquipeDao
                 .findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(codeMembre,codeIntervention);
 
-        return x != null;
+        return x == null;
 
     }
 

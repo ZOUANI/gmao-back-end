@@ -10,6 +10,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/tacheIntervention")
 public class TacheInterventionProvided {
+    @GetMapping("/collaborateur/code/{code}")
+    public List<TacheIntervention> findByMembreEquipeCollaborateurCodeCollaborateur(@PathVariable String code) {
+        return tacheInterventionService.findByMembreEquipeCollaborateurCodeCollaborateur(code);
+    }
 
     @Autowired
     private TacheInterventionService tacheInterventionService;

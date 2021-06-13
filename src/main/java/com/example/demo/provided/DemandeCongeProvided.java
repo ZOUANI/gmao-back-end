@@ -19,8 +19,8 @@ public class DemandeCongeProvided {
     }
 
     @GetMapping("/code/{code}")
-    public List<DemandeConge> findByEtatDemandeCongeCode(String code) {
-        return demandeCongeService.findByEtatDemandeCongeCode(code);
+    public DemandeConge findByCode(@PathVariable String code) {
+        return demandeCongeService.findByCode(code);
     }
     @GetMapping("/")
     public List<DemandeConge> findAll() {

@@ -24,7 +24,12 @@ public class DemandeCongeService {
     private EtatDemandeCongeService etatDemandeCongeService;
     @Autowired
     private CollaborateurService collaborateurService;
- private DemandeCongeDao getDemandeCongeDao;
+
+
+
+    @Autowired
+    private DemandeCongeDao getDemandeCoxngeDao;
+
     public Optional<DemandeConge> findById(Long id) {
         return demandeCongeDao.findById(id);
     }
@@ -35,6 +40,10 @@ public class DemandeCongeService {
 
     public List<DemandeConge> findAll() {
         return demandeCongeDao.findAll();
+    }
+
+    public DemandeConge findByCode(String code) {
+        return demandeCongeDao.findByCode(code);
     }
 
 

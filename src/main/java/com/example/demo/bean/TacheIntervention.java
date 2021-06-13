@@ -13,10 +13,10 @@ public class TacheIntervention {
     private String description;
     private Boolean EtatTache;
     private Date date;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private MembreEquipe membreEquipe;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Intervention intervention;
 
