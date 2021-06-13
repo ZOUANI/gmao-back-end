@@ -23,10 +23,10 @@ public class TacheInterventionProvided {
         return tacheInterventionService.findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(codeCollaborateur, codeIntervention);
     }
 
-//    @GetMapping("/code/{code}")
-//    public int completerTache(@PathVariable String code) {
-//        return tacheInterventionService.completerTache(code);
-//    }
+    @GetMapping ("/completerTache/{code}")
+    public int completerTache(@PathVariable String code) {
+        return tacheInterventionService.completerTache(code);
+    }
 
     @PostMapping("/")
     public int save(@RequestBody TacheIntervention tacheIntervention) {

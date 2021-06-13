@@ -27,7 +27,6 @@ public class DemandeCongeProvided {
     public int save(@RequestBody DemandeConge demandeConge) {
         return demandeCongeService.save(demandeConge);
     }
-
     @Autowired
     private DemandeCongeService demandeCongeService;
 

@@ -12,6 +12,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/Collaborateurintervention-api/Collaborateurintervention")
 public class InterventionMembreEquipeProvided {
+    @GetMapping("/code/{code}")
+    public InterventionMembreEquipe findByMembreEquipeCollaborateurCodeCollaborateur(@PathVariable String code) {
+        return interventionMembreEquipeService.findByMembreEquipeCollaborateurCodeCollaborateur(code);
+    }
+
     @Autowired
     InterventionMembreEquipeService interventionMembreEquipeService;
     @GetMapping("CollaborateurCode/{codeCollaborateur}/InterventionCode/{codeIntervention}")

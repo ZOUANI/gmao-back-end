@@ -13,6 +13,10 @@ import java.util.List;
 
 @Service
 public class InterventionMembreEquipeService {
+    public InterventionMembreEquipe findByMembreEquipeCollaborateurCodeCollaborateur(String code) {
+        return interventionCollaborateurDao.findByMembreEquipeCollaborateurCodeCollaborateur(code);
+    }
+
     @Autowired
     private InterventionMembreEquipeDao interventionCollaborateurDao;
     @Autowired

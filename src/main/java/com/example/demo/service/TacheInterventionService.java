@@ -92,12 +92,6 @@ public class TacheInterventionService {
     }
     public int completerTache(String codeTache){
         TacheIntervention tacheIntervention = tacheInterventionDao.findByCode(codeTache);
-        if(tacheIntervention == null)
-            return -1;
-        else if(verifierAppartenance(tacheIntervention.getIntervention().getCode(),
-                tacheIntervention.getMembreEquipe().getCollaborateur().getCodeCollaborateur()))
-            return -2;
-        else{
             try{
                 tacheIntervention.setEtatTache(true);
                 tacheInterventionDao.save(tacheIntervention);
@@ -107,7 +101,6 @@ public class TacheInterventionService {
                 return -3;
             }
 
-        }
     }
 
 
