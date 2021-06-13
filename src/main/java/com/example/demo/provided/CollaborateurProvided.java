@@ -44,9 +44,9 @@ public class CollaborateurProvided {
 	}
 
 
-	@PostMapping("/signin")
-	public Collaborateur signin(@RequestBody Collaborateur collaborateur) {
-		return collaborateurService.signin(collaborateur);
+	@GetMapping("/signin/{login}/password/{password}")
+	public Collaborateur signin(@PathVariable String login,@PathVariable String password) {
+		return collaborateurService.signin(login,password);
 	}
 
 

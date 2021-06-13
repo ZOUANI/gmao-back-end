@@ -45,15 +45,7 @@ public class CollaborateurService {
         }
     }
 
-    public Collaborateur signin(Collaborateur collaborateur) {
-        Collaborateur foundedCollaborateur = this.collaborateurDao.findByLogin(collaborateur.getLogin());
-        if(foundedCollaborateur == null){
-            return null;
-        }
-        if (!foundedCollaborateur.getPassword().equals(collaborateur.getPassword())){
-            return null;
-        }else{
-            return foundedCollaborateur;
-        }
+    public Collaborateur signin(String login,String passowrd) {
+        return findByLoginAndPassword(login,passowrd);
     }
 }
