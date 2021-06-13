@@ -12,7 +12,6 @@ import java.util.Optional;
 public interface DemandeCongeDao extends JpaRepository<DemandeConge,Long> {
     Optional<DemandeConge> findById(Long id);
     public List<DemandeConge> findByAction(String action);
-    List<DemandeConge> findByEtatDemandeCongeCode(String code);
     DemandeConge findByCode(String code);
     public List<DemandeConge> findByCollaborateur(String collaborateur);
     int deleteByCode(String code);

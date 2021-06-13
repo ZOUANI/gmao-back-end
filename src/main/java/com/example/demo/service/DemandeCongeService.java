@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.bean.Collaborateur;
 import com.example.demo.bean.DemandeConge;
-import com.example.demo.bean.EtatDemandeConge;
 import com.example.demo.dao.DemandeCongeDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,7 @@ public class DemandeCongeService {
 
  @Autowired
  private DemandeCongeDao demandeCongeDao;
-    @Autowired
-    private EtatDemandeCongeService etatDemandeCongeService;
+
     @Autowired
     private CollaborateurService collaborateurService;
 
@@ -32,10 +30,6 @@ public class DemandeCongeService {
 
     public Optional<DemandeConge> findById(Long id) {
         return demandeCongeDao.findById(id);
-    }
-
-    public List<DemandeConge> findByEtatDemandeCongeCode(String code) {
-        return demandeCongeDao.findByEtatDemandeCongeCode(code);
     }
 
     public List<DemandeConge> findAll() {

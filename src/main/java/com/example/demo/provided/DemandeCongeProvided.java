@@ -18,27 +18,17 @@ public class DemandeCongeProvided {
         return demandeCongeService.findById(id);
     }
 
-    @GetMapping("/code/{code}")
-    public DemandeConge findByCode(@PathVariable String code) {
-        return demandeCongeService.findByCode(code);
-    }
     @GetMapping("/")
     public List<DemandeConge> findAll() {
         return demandeCongeService.findAll();
     }
 
     @PostMapping("/")
-    public int save(@RequestBody  DemandeConge demandeConge) {
+    public int save(@RequestBody DemandeConge demandeConge) {
         return demandeCongeService.save(demandeConge);
     }
-
-
-
-
-
 
     @Autowired
     private DemandeCongeService demandeCongeService;
 
 }
-
