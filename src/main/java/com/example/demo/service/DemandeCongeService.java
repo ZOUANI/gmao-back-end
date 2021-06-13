@@ -46,4 +46,22 @@ public class DemandeCongeService {
             }
         }
     }
+    public int update(String code,DemandeConge demandeConge){
+        DemandeConge demandeConge1= demandeCongeDao.findByCode(code);
+        if(demandeConge1!=null){
+            demandeConge1.setEtatDemandeConge(demandeConge.getEtatDemandeConge());
+            Collaborateur collaborateur=collaborateurService.findByCodeCollaborateur(demandeConge.getCollaborateur().getCodeCollaborateur());
+            demandeConge1.setCollaborateur(collaborateur);
+            demandeConge1.setCode(demandeConge.getCode());
+            demandeConge1.setDateDepart(demandeConge.getDateDepart());
+            demandeConge1.setDateFin(demandeConge.getDateFin());
+            demandeConge1.setMessageCollaborateur(demandeConge.getMessageCollaborateur());
+            demandeCongeDao.save(demandeConge1);
+            return 1;
+        }
+        else{
+            return -1;
+        }
+
+    }
 }

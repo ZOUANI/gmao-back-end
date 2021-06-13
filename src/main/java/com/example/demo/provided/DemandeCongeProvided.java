@@ -27,6 +27,12 @@ public class DemandeCongeProvided {
     public int save(@RequestBody  DemandeConge demandeConge) {
         return demandeCongeService.save(demandeConge);
     }
+    @PutMapping("/code/{code}")
+    public int update(@PathVariable String code,@RequestBody DemandeConge demandeConge) {
+        return demandeCongeService.update(code, demandeConge);
+    }
+
+
 
 
 
