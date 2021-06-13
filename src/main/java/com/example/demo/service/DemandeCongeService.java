@@ -75,6 +75,6 @@ public class DemandeCongeService {
     }
 
     public List<DemandeConge> findByCollaborateur(String collaborateur) {
-        return demandeCongeDao.findByCollaborateur(collaborateur);
+        return demandeCongeDao.findByCollaborateurCodeCollaborateur(collaborateur);
     }
 }
