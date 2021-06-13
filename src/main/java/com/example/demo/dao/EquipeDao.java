@@ -13,7 +13,7 @@ public interface EquipeDao extends JpaRepository<Equipe, Long> {
 
     public Equipe findByLibelle(String libelle);
 
-    public Equipe findByChefEquipeCollaborateurFullname(String fullname);
+    public Equipe findByChefEquipeCollaborateurCodeCollaborateur(String Code);
 
     public Equipe findByCode(String code);
 

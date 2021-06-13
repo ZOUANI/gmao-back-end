@@ -46,13 +46,12 @@ public class TacheInterventionService {
         return tacheInterventionDao.findAll();
     }
 
-    public boolean verifierAppartenance(String codeIntervention,String codeMembre){
-        InterventionMembreEquipe x = interventionMembreEquipeDao
-                .findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(codeMembre,codeIntervention);
-
-        return x == null;
-
-    }
+//    public boolean verifierAppartenance(String codeIntervention,String codeMembre){
+//        InterventionMembreEquipe x =
+//
+//        return x == null;
+//
+//    }
 
     public int save( TacheIntervention tacheIntervention) {
         MembreEquipe membreEquipe = membreEquipeDao.findByCollaborateurCodeCollaborateur(
@@ -69,15 +68,10 @@ public class TacheInterventionService {
 //        System.out.println(intervention.getCode()+"             "+membreEquipe.getId());
         if(intervention == null || membreEquipe == null){
             return -1;
-        }else if(verifierAppartenance(
-                tacheIntervention
-                        .getIntervention()
-                        .getCode(),
-                tacheIntervention
-                        .getMembreEquipe()
-                        .getCollaborateur()
-                        .getCodeCollaborateur()))
-            return -2;
+        }
+//        InterventionMembreEquipe interventionMembreEquipe=interventionMembreEquipeDao.findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(tacheIntervention.getIntervention().getCode(), tacheIntervention.getMembreEquipe().getCollaborateur().getCodeCollaborateur());
+//        if(interventionMembreEquipe == null)
+//            return -2;
         else{
             try{
                 tacheIntervention.setIntervention(intervention);

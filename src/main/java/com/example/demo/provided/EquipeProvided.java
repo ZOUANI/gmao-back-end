@@ -25,9 +25,9 @@ public class EquipeProvided {
   return equipeService.findByLibelle(libelle);
  }
 
- @GetMapping("/Chef/Collaborateur/nom/{fullname}")
- public Equipe findByChefEquipeCollaborateurFullname(@PathVariable String fullname) {
-  return equipeService.findByChefEquipeCollaborateurFullname(fullname);
+ @GetMapping("/Chef/Collaborateur/nom/{code}")
+ public Equipe findByChefEquipeCollaborateurCode(@PathVariable String code) {
+  return equipeService.findByChefEquipeCollaborateurCode(code);
  }
 
  @GetMapping("/code/{code}")

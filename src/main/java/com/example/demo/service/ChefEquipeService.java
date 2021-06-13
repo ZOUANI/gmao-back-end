@@ -22,12 +22,12 @@ public class ChefEquipeService  {
         return chefEquipeDao.findByLogin(login);
     }
 
-    public ChefEquipe seconnecter(ChefEquipe chefEquipe) {
-        ChefEquipe foundedChefEquipe = this.chefEquipeDao.findByLogin(chefEquipe.getLogin());
+    public ChefEquipe seconnecter(String Login,String password) {
+        ChefEquipe foundedChefEquipe = this.chefEquipeDao.findByLogin(Login);
         if(foundedChefEquipe  == null){
             return null;
         }
-        else if (!foundedChefEquipe.getPassword().equals(chefEquipe.getPassword())){
+        else if (!foundedChefEquipe.getPassword().equals(password)){
             return null;
         }else{
             return foundedChefEquipe;

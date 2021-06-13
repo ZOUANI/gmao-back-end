@@ -19,9 +19,9 @@ public class ChefEquipeProvided {
         return chefEquipeService.findByLogin(login);
     }
 
-    @PostMapping("/seconnecter")
-    public ChefEquipe seconnecter(@RequestBody ChefEquipe chefAgence) {
-        return chefEquipeService.seconnecter(chefAgence);
+    @GetMapping("/seconnecter/{login}/password/{password}")
+    public ChefEquipe seconnecter(@PathVariable String login,@PathVariable String password) {
+        return chefEquipeService.seconnecter(login,password);
     }
 
     @GetMapping("/code{code}")

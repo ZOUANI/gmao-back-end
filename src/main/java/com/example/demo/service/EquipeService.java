@@ -40,8 +40,8 @@ public class EquipeService {
         return equipeDao.findByLibelle(libelle);
     }
 
-    public Equipe findByChefEquipeCollaborateurFullname(String fullname) {
-        return equipeDao.findByChefEquipeCollaborateurFullname(fullname);
+    public Equipe findByChefEquipeCollaborateurCode(String code) {
+        return equipeDao.findByChefEquipeCollaborateurCodeCollaborateur(code);
     }
 
     public Equipe findByCode(String code) {

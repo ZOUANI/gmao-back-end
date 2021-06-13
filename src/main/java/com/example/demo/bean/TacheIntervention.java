@@ -11,7 +11,7 @@ public class TacheIntervention {
     private Long id;
     private String code;
     private String description;
-    private Boolean EtatTache;
+    private Boolean etatTache;
     private Date date;
 //    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
@@ -46,11 +46,11 @@ public class TacheIntervention {
     }
 
     public Boolean getEtatTache() {
-        return EtatTache;
+        return etatTache;
     }
 
     public void setEtatTache(Boolean etatTache) {
-        EtatTache = etatTache;
+        this.etatTache = etatTache;
     }
 
     public Date getDate() {
