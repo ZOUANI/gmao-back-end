@@ -6,6 +6,7 @@ import com.example.demo.dao.DemandeCongeDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
@@ -63,5 +64,17 @@ public class DemandeCongeService {
             return -1;
         }
 
+    }
+    @Transactional
+    public int deleteByCode(String code) {
+        return demandeCongeDao.deleteByCode(code);
+    }
+
+    public DemandeConge findByCode(String code) {
+        return demandeCongeDao.findByCode(code);
+    }
+
+    public List<DemandeConge> findByCollaborateur(String collaborateur) {
+        return demandeCongeDao.findByCollaborateur(collaborateur);
     }
 }
