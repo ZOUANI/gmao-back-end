@@ -66,26 +66,27 @@ public class TacheInterventionService {
                         .getIntervention()
                         .getCode()
         );
-
-        if(verifierAppartenance(
+//        System.out.println(intervention.getCode()+"             "+membreEquipe.getId());
+        if(intervention == null || membreEquipe == null){
+            return -1;
+        }else if(verifierAppartenance(
                 tacheIntervention
                         .getIntervention()
                         .getCode(),
                 tacheIntervention
                         .getMembreEquipe()
                         .getCollaborateur()
-                        .getCodeCollaborateur()
-        )
-        )
-            return -1;
+                        .getCodeCollaborateur()))
+            return -2;
         else{
             try{
                 tacheIntervention.setIntervention(intervention);
                 tacheIntervention.setEtatTache(false);
                 tacheIntervention.setMembreEquipe(membreEquipe);
+                tacheInterventionDao.save(tacheIntervention);
                 return 1;
             }catch(Exception e){
-                return -2;
+                return -3;
             }
         }
     }
