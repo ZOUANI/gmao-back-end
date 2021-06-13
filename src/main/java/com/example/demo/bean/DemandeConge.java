@@ -16,7 +16,6 @@ import java.util.Date;
 @Entity
 public class DemandeConge implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -28,12 +27,7 @@ public class DemandeConge implements Serializable {
     private String dateFin;
     private String messageCollaborateur;
     //    private String commentaireValidateur;
-    @ManyToOne
-    private EtatDemandeConge etatDemandeConge;
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
+    private Boolean etatDemandeConge;
 
     public Long getId() {
         return id;
@@ -57,6 +51,14 @@ public class DemandeConge implements Serializable {
 
     public void setCollaborateur(Collaborateur collaborateur) {
         this.collaborateur = collaborateur;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
 
     public String getDateDepart() {
@@ -83,23 +85,13 @@ public class DemandeConge implements Serializable {
         this.messageCollaborateur = messageCollaborateur;
     }
 
-    public EtatDemandeConge getEtatDemandeConge() {
+    public Boolean getEtatDemandeConge() {
         return etatDemandeConge;
     }
 
-    public void setEtatDemandeConge(EtatDemandeConge etatDemandeConge) {
+    public void setEtatDemandeConge(Boolean etatDemandeConge) {
         this.etatDemandeConge = etatDemandeConge;
     }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-
 }
 
 

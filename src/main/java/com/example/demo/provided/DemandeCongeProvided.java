@@ -18,10 +18,6 @@ public class DemandeCongeProvided {
         return demandeCongeService.findById(id);
     }
 
-    @GetMapping("/code/{code}")
-    public List<DemandeConge> findByEtatDemandeCongeCode(String code) {
-        return demandeCongeService.findByEtatDemandeCongeCode(code);
-    }
     @GetMapping("/")
     public List<DemandeConge> findAll() {
         return demandeCongeService.findAll();
