@@ -49,10 +49,8 @@ public class TacheInterventionService {
     public boolean verifierAppartenance(String codeIntervention,String codeMembre){
         InterventionMembreEquipe x = interventionMembreEquipeDao
                 .findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(codeMembre,codeIntervention);
-        MembreEquipe y = membreEquipeDao.findByCollaborateurCodeCollaborateur(codeMembre);
-        Intervention z = interventionService.findByCode(codeIntervention);
 
-        return x == null || y == null || z == null;
+        return x != null;
 
     }
 

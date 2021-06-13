@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value ="/tacheIntervention")
+@RequestMapping("/tacheIntervention")
 public class TacheInterventionProvided {
 
     @Autowired
@@ -19,17 +19,17 @@ public class TacheInterventionProvided {
         return tacheInterventionService.findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(codeCollaborateur, codeIntervention);
     }
 
-    @GetMapping("/code/{code}")
-    public int completerTache(@PathVariable String code) {
-        return tacheInterventionService.completerTache(code);
-    }
+//    @GetMapping("/code/{code}")
+//    public int completerTache(@PathVariable String code) {
+//        return tacheInterventionService.completerTache(code);
+//    }
 
     @PostMapping("/")
     public int save(@RequestBody TacheIntervention tacheIntervention) {
         return tacheInterventionService.save(tacheIntervention);
     }
 
-    @GetMapping("/code/{Code}")
+    @GetMapping("/code/{code}")
     public TacheIntervention findByCode(@PathVariable String code) {
         return tacheInterventionService.findByCode(code);
     }
