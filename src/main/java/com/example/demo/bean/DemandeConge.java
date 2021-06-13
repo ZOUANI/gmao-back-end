@@ -22,7 +22,6 @@ public class DemandeConge implements Serializable {
     private String code;
     @ManyToOne
     private Collaborateur collaborateur;
-    private String action;
     private String dateDepart;
     private String dateFin;
     private String messageCollaborateur;
@@ -53,13 +52,7 @@ public class DemandeConge implements Serializable {
         this.collaborateur = collaborateur;
     }
 
-    public String getAction() {
-        return action;
-    }
 
-    public void setAction(String action) {
-        this.action = action;
-    }
 
     public String getDateDepart() {
         return dateDepart;

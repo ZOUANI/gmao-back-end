@@ -36,7 +36,7 @@ public class CollaborateurService {
     }
 
     public int save(Collaborateur collaborateur) {
-        if (collaborateurDao.findByLogin(collaborateur.getLogin()) != null) {
+        if (collaborateurDao.findByCodeCollaborateur(collaborateur.getCodeCollaborateur()) != null) {
             return -1;
         }
         else {
