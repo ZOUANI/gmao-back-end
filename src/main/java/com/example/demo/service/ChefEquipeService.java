@@ -1,20 +1,19 @@
 package com.example.demo.service;
 
-
-import com.example.demo.bean.ChefEquipe;
-import com.example.demo.dao.ChefEquipeDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class ChefEquipeService  {
+import javax.transaction.Transactional;
 
-    @Autowired
-    private ChefEquipeService chefEquipeService;
+import com.example.demo.bean.ChefEquipe;
+import com.example.demo.dao.ChefEquipeDao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ChefEquipeService {
+
     @Autowired
     private ChefEquipeDao chefEquipeDao;
 
@@ -22,19 +21,16 @@ public class ChefEquipeService  {
         return chefEquipeDao.findByLogin(login);
     }
 
-    public ChefEquipe seconnecter(String Login,String password) {
+    public ChefEquipe seconnecter(String Login, String password) {
         ChefEquipe foundedChefEquipe = this.chefEquipeDao.findByLogin(Login);
-        if(foundedChefEquipe  == null){
+        if (foundedChefEquipe == null) {
             return null;
-        }
-        else if (!foundedChefEquipe.getPassword().equals(password)){
+        } else if (!foundedChefEquipe.getPassword().equals(password)) {
             return null;
-        }else{
+        } else {
             return foundedChefEquipe;
         }
     }
-
-
 
     public ChefEquipe findByCode(String code) {
         return chefEquipeDao.findByCode(code);
@@ -53,23 +49,19 @@ public class ChefEquipeService  {
         return chefEquipeDao.findAll();
     }
 
-    public ChefEquipe  save(ChefEquipe chefEquipe) {
-        if(findByCode(chefEquipe.getCode())!= null){
-            return  null;
-        }else{
-           chefEquipeDao.save(chefEquipe);
-           return chefEquipe;
+    public ChefEquipe save(ChefEquipe chefEquipe) {
+        if (findByCode(chefEquipe.getCode()) != null) {
+            return null;
+        } else {
+            chefEquipeDao.save(chefEquipe);
+            return chefEquipe;
 
         }
     }
 
-
-
-
-   public ChefEquipe update(ChefEquipe chefEquipe){
-     chefEquipeDao.save(chefEquipe);
-     return chefEquipe;
-   }
-
+    public ChefEquipe update(ChefEquipe chefEquipe) {
+        chefEquipeDao.save(chefEquipe);
+        return chefEquipe;
+    }
 
 }

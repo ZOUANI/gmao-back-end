@@ -5,9 +5,13 @@
  */
 package com.example.demo.bean;
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -25,7 +29,7 @@ public class DemandeConge implements Serializable {
     private String dateDepart;
     private String dateFin;
     private String messageCollaborateur;
-    //    private String commentaireValidateur;
+    // private String commentaireValidateur;
     private Boolean etatDemandeConge;
 
     public Long getId() {
@@ -51,8 +55,6 @@ public class DemandeConge implements Serializable {
     public void setCollaborateur(Collaborateur collaborateur) {
         this.collaborateur = collaborateur;
     }
-
-
 
     public String getDateDepart() {
         return dateDepart;
@@ -86,6 +88,3 @@ public class DemandeConge implements Serializable {
         this.etatDemandeConge = etatDemandeConge;
     }
 }
-
-
-

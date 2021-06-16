@@ -1,7 +1,9 @@
 package com.example.demo.bean;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Collaborateur {
@@ -14,7 +16,6 @@ public class Collaborateur {
     private String phone;
     private String password;
     private String email;
-
 
     public String getLogin() {
         return login;

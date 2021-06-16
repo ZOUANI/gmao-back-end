@@ -1,10 +1,11 @@
 package com.example.demo.bean;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 @Entity
 public class ChefEquipe implements Serializable {
@@ -74,10 +75,5 @@ public class ChefEquipe implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    private int nbrCnx = 3;
-    private boolean blocked;
-    private boolean mustChangePassword = true;
-
 
 }

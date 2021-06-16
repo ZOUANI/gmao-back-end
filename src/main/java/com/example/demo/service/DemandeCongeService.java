@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.example.demo.bean.Collaborateur;
 import com.example.demo.bean.DemandeConge;
 import com.example.demo.dao.DemandeCongeDao;
@@ -8,24 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class DemandeCongeService {
-    @Autowired
-    private EntityManager entityManager;
 
     @Autowired
     private DemandeCongeDao demandeCongeDao;
 
     @Autowired
     private CollaborateurService collaborateurService;
-
-    @Autowired
-    private DemandeCongeDao getDemandeCoxngeDao;
 
     public Optional<DemandeConge> findById(Long id) {
         return demandeCongeDao.findById(id);

@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.demo.bean.Admin;
 import com.example.demo.bean.Collaborateur;
 import com.example.demo.dao.CollaborateurDao;
 
@@ -38,14 +37,13 @@ public class CollaborateurService {
     public int save(Collaborateur collaborateur) {
         if (collaborateurDao.findByCodeCollaborateur(collaborateur.getCodeCollaborateur()) != null) {
             return -1;
-        }
-        else {
+        } else {
             collaborateurDao.save(collaborateur);
             return 1;
         }
     }
 
-    public Collaborateur signin(String login,String passowrd) {
-        return findByLoginAndPassword(login,passowrd);
+    public Collaborateur signin(String login, String passowrd) {
+        return findByLoginAndPassword(login, passowrd);
     }
 }
