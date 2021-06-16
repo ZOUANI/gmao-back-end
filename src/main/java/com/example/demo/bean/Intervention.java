@@ -34,6 +34,7 @@ public class Intervention {
     @OneToMany(mappedBy = "intervention" )
     private List<MateraialIntervention> materaialInterventions;
 
+
     public Long getId() {
         return id;
     }

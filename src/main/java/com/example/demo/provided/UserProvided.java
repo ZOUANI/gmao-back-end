@@ -41,4 +41,20 @@ public class UserProvided {
     public int IsConnected(@PathVariable String login,@PathVariable String password) {
         return userService.IsConnected(login, password);
     }
+    @GetMapping("/connected/{email}")
+    public String forgotPassword(@PathVariable String email) {
+        return userService.forgotPassword(email);
+    }
+    @GetMapping("/iscodeTrue/{codeRequired}")
+    public int isCodeTrue(@PathVariable String codeRequired) {
+        return userService.isCodeTrue(codeRequired);
+    }
+    @GetMapping("/login/{login}")
+    public User findByLogin(@PathVariable String login) {
+        return userService.findByLogin(login);
+    }
+    @GetMapping("/login/{login}/password/{password}")
+    public int update(@PathVariable String login,@PathVariable String password) {
+        return userService.update(login, password);
+    }
 }

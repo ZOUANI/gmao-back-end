@@ -2,8 +2,8 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.demo.bean.Admin;
 import com.example.demo.bean.Collaborateur;
+import com.example.demo.bean.User;
 import com.example.demo.dao.CollaborateurDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,8 @@ public class CollaborateurService {
 
     @Autowired
     private CollaborateurDao collaborateurDao;
-
+    @Autowired
+    private UserService userService;
     public Collaborateur findByFullname(String fullname) {
         return collaborateurDao.findByFullname(fullname);
     }
@@ -36,11 +37,16 @@ public class CollaborateurService {
     }
 
     public int save(Collaborateur collaborateur) {
+
         if (collaborateurDao.findByCodeCollaborateur(collaborateur.getCodeCollaborateur()) != null) {
             return -1;
         }
         else {
             collaborateurDao.save(collaborateur);
+            User user=new User();
+            user.setCollaborateur(collaborateur);
+            user.setRole("collaborateur");
+            this.userService.register(user);
             return 1;
         }
     }

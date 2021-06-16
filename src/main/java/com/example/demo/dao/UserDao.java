@@ -13,4 +13,5 @@ public interface UserDao extends JpaRepository<User,Long> {
     User findByCollaborateurCodeCollaborateur(String code);
     int deleteByLoginAndPassword(String login,String password);
     int deleteByCollaborateurCodeCollaborateur(String code);
+    User findByLogin(String login);
 }

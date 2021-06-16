@@ -8,6 +8,7 @@ package com.example.demo.service;
 import com.example.demo.bean.Collaborateur;
 import com.example.demo.bean.Equipe;
 import com.example.demo.bean.MembreEquipe;
+import com.example.demo.bean.User;
 import com.example.demo.dao.EquipeDao;
 
 import java.util.ArrayList;
@@ -21,7 +22,8 @@ public class EquipeService {
 
     @Autowired
     private EquipeDao equipeDao;
-
+    @Autowired
+    private UserService userService;
     public List<Equipe> findAll() {
         return equipeDao.findAll();
     }
@@ -57,6 +59,13 @@ public class EquipeService {
             return -1;
         else {
             membreEquipeService.save(equipe.getChefEquipe());
+            User user=new User();
+            user.setCollaborateur(equipe.getChefEquipe().getCollaborateur());
+            user.setRole("chef-equipe");
+            user.setLogin(equipe.getChefEquipe().getCollaborateur().getLogin());
+            user.setPassword(equipe.getChefEquipe().getCollaborateur().getPassword());
+            this.userService.register(user);
+
             equipe.getChefEquipe().setEquipe(equipe);
             equipeDao.save(equipe);
             for (MembreEquipe membreEquipe : equipe.getMembres()) {

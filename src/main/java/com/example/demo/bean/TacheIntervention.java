@@ -1,5 +1,6 @@
 package com.example.demo.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ public class TacheIntervention {
     private String code;
     private String description;
     private Boolean etatTache;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
 //    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
