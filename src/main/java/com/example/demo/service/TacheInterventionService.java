@@ -85,7 +85,7 @@ public class TacheInterventionService {
     public int completerTache(String codeTache) {
         TacheIntervention tacheIntervention = tacheInterventionDao.findByCode(codeTache);
         try {
-            tacheIntervention.setEtatTache(true);
+            tacheIntervention.setEtatTache(!tacheIntervention.getEtatTache());
             tacheInterventionDao.save(tacheIntervention);
             return 1;
         } catch (Exception e) {

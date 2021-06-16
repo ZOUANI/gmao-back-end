@@ -5,12 +5,12 @@
  */
 package com.example.demo.dao;
 
-import com.example.demo.bean.Equipe;
+import java.util.List;
+
 import com.example.demo.bean.MembreEquipe;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  *
@@ -22,7 +22,9 @@ public interface MembreEquipeDao extends JpaRepository<MembreEquipe, Long> {
     public MembreEquipe findByCollaborateurFullname(String fullname);
 
     public List<MembreEquipe> findByEquipeRef(String ref);
-    public MembreEquipe  findByCollaborateurCodeCollaborateur(String code);
+
+    public MembreEquipe findByCollaborateurCodeCollaborateur(String code);
+
     public int deleteByCollaborateurFullname(String fullname);
 
 }
