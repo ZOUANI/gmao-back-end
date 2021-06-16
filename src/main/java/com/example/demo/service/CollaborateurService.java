@@ -40,8 +40,7 @@ public class CollaborateurService {
 
         if (collaborateurDao.findByCodeCollaborateur(collaborateur.getCodeCollaborateur()) != null) {
             return -1;
-        }
-        else {
+        } else {
             collaborateurDao.save(collaborateur);
             User user=new User();
             user.setCollaborateur(collaborateur);
@@ -51,7 +50,7 @@ public class CollaborateurService {
         }
     }
 
-    public Collaborateur signin(String login,String passowrd) {
-        return findByLoginAndPassword(login,passowrd);
+    public Collaborateur signin(String login, String passowrd) {
+        return findByLoginAndPassword(login, passowrd);
     }
 }

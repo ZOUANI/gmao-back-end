@@ -1,16 +1,21 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.*;
-import com.example.demo.dao.InterventionDao;
-import com.example.demo.vo.InterventionVo;
-import com.example.demo.service.util.StringUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
+
+import com.example.demo.bean.Conseils;
+import com.example.demo.bean.EtatIntervention;
+import com.example.demo.bean.Intervention;
+import com.example.demo.bean.InterventionMembreEquipe;
+import com.example.demo.bean.MateraialIntervention;
+import com.example.demo.dao.InterventionDao;
+import com.example.demo.service.util.StringUtil;
+import com.example.demo.vo.InterventionVo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class InterventionService {

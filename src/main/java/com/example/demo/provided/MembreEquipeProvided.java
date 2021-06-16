@@ -2,7 +2,6 @@ package com.example.demo.provided;
 
 import java.util.List;
 
-import com.example.demo.bean.Equipe;
 import com.example.demo.bean.MembreEquipe;
 import com.example.demo.service.MembreEquipeService;
 
@@ -41,9 +40,10 @@ public class MembreEquipeProvided {
  }
 
  @PostMapping("/")
- public int save( @RequestBody MembreEquipe membres) {
-  return membreEquipeService.save( membres);
+ public int save(@RequestBody MembreEquipe membres) {
+  return membreEquipeService.save(membres);
  }
+
  @GetMapping("/collaborateur/code/{code}")
  public MembreEquipe findByCollaborateurCodeCollaborateur(String code) {
   return membreEquipeService.findByCollaborateurCodeCollaborateur(code);

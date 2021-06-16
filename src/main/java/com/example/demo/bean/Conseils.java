@@ -1,9 +1,10 @@
 package com.example.demo.bean;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Conseils {
@@ -12,8 +13,8 @@ public class Conseils {
     private Long id;
     @ManyToOne
     private Collaborateur collaborateur;
-//    @ManyToOne
-//    private Equipe equipe;
+    // @ManyToOne
+    // private Equipe equipe;
     private String message;
     @ManyToOne
     private Intervention intervention;
@@ -34,14 +35,11 @@ public class Conseils {
         this.collaborateur = collaborateur;
     }
 
-   /* public Equipe getEquipe() {
-        return equipe;
-    }
-
-    public void setEquipe(Equipe equipe) {
-        this.equipe = equipe;
-    }
-*/
+    /*
+     * public Equipe getEquipe() { return equipe; }
+     * 
+     * public void setEquipe(Equipe equipe) { this.equipe = equipe; }
+     */
     public String getMessage() {
         return message;
     }
@@ -49,7 +47,6 @@ public class Conseils {
     public void setMessage(String message) {
         this.message = message;
     }
-
 
     public Intervention getIntervention() {
         return intervention;

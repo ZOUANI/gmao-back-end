@@ -5,11 +5,11 @@
  */
 package com.example.demo.service;
 
-import com.example.demo.bean.Collaborateur;
-import com.example.demo.bean.Equipe;
+import java.util.List;
+
 import com.example.demo.bean.MembreEquipe;
 import com.example.demo.dao.MembreEquipeDao;
-import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,15 +47,16 @@ public class MembreEquipeService {
         return membreEquipeDao.findAll();
     }
 
-    public int save( MembreEquipe membres) {
+    public int save(MembreEquipe membres) {
 
-            if (membres.getCollaborateur() != null && membres.getCollaborateur().getCodeCollaborateur() != null) {
-                membres.setCollaborateur(collaborateurService.findByCodeCollaborateur(membres.getCollaborateur().getCodeCollaborateur()));
-               membreEquipeDao.save(membres);
-        return 0;}
-            else {
-                return -2;
-            }
+        if (membres.getCollaborateur() != null && membres.getCollaborateur().getCodeCollaborateur() != null) {
+            membres.setCollaborateur(
+                    collaborateurService.findByCodeCollaborateur(membres.getCollaborateur().getCodeCollaborateur()));
+            membreEquipeDao.save(membres);
+            return 0;
+        } else {
+            return -2;
+        }
     }
 
 }

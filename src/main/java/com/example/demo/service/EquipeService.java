@@ -5,14 +5,14 @@
  */
 package com.example.demo.service;
 
-import com.example.demo.bean.Collaborateur;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.demo.bean.Equipe;
 import com.example.demo.bean.MembreEquipe;
 import com.example.demo.bean.User;
 import com.example.demo.dao.EquipeDao;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,8 +30,6 @@ public class EquipeService {
 
     @Autowired
     private MembreEquipeService membreEquipeService;
-    @Autowired
-    private CollaborateurService collaborateurService;
 
     @Transactional
     public int deleteByRef(String ref) {
@@ -70,7 +68,8 @@ public class EquipeService {
             equipeDao.save(equipe);
             for (MembreEquipe membreEquipe : equipe.getMembres()) {
                 membreEquipe.setEquipe(equipe);
-                if(equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur().equals(membreEquipe.getCollaborateur().getCodeCollaborateur()))
+                if (equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur()
+                        .equals(membreEquipe.getCollaborateur().getCodeCollaborateur()))
                     continue;
                 membreEquipeService.save(membreEquipe);
             }
@@ -85,8 +84,9 @@ public class EquipeService {
             equipe1.setRef(equipe.getRef());
             equipe1.setLibelle(equipe.getLibelle());
             equipe1.setCode(equipe.getCode());
-            MembreEquipe chefEquipe = membreEquipeService.findByCollaborateurCodeCollaborateur(equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur());
-            if(chefEquipe==null){
+            MembreEquipe chefEquipe = membreEquipeService.findByCollaborateurCodeCollaborateur(
+                    equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur());
+            if (chefEquipe == null) {
                 membreEquipeService.save(equipe.getChefEquipe());
             }
             equipe.getChefEquipe().setEquipe(equipe1);
@@ -94,9 +94,11 @@ public class EquipeService {
             List<MembreEquipe> membreEquipeList = new ArrayList<>();
             equipeDao.save(equipe1);
             for (MembreEquipe membres : equipe.getMembres()) {
-                MembreEquipe membreEquipe = membreEquipeService.findByCollaborateurCodeCollaborateur(membres.getCollaborateur().getCodeCollaborateur());
+                MembreEquipe membreEquipe = membreEquipeService
+                        .findByCollaborateurCodeCollaborateur(membres.getCollaborateur().getCodeCollaborateur());
                 membres.setEquipe(equipe1);
-                if(equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur().equals(membreEquipe.getCollaborateur().getCodeCollaborateur()))
+                if (equipe.getChefEquipe().getCollaborateur().getCodeCollaborateur()
+                        .equals(membreEquipe.getCollaborateur().getCodeCollaborateur()))
                     continue;
                 membreEquipeService.save(membres);
                 membreEquipeList.add(membreEquipe);
