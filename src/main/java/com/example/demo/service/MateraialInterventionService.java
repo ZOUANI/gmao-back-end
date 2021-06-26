@@ -43,8 +43,8 @@ public class MateraialInterventionService {
         if (material==null)
             return -2;
         Collaborateur collaborateur=collaborateurService.findByCodeCollaborateur(materaialIntervention.getCollaborateur().getCodeCollaborateur());
-        if (collaborateur ==null)
-            return -2;
+//        if (collaborateur ==null)
+//            return -2;
         materaialIntervention.setMaterial(material);
         materaialIntervention.setMagasin(magasin);
         materaialIntervention.setCollaborateur(collaborateur);

@@ -1,18 +1,16 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import com.example.demo.bean.Conseils;
-import com.example.demo.bean.EtatIntervention;
-import com.example.demo.bean.Intervention;
-import com.example.demo.bean.InterventionMembreEquipe;
-import com.example.demo.bean.MateraialIntervention;
+import com.example.demo.bean.*;
 import com.example.demo.dao.InterventionDao;
 import com.example.demo.service.util.StringUtil;
 import com.example.demo.vo.InterventionVo;
 
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -107,11 +105,30 @@ public class InterventionService {
 
     public int update(String code, Intervention intervention) {
         Intervention interventions = findByCode(code);
+        interventionMembreEquipeService.deleteByInterventionCode(code);
         if (interventions != null) {
-            interventions.setEtatIntervention(intervention.getEtatIntervention());
-            interventions.setInterventionMembreEquipe(intervention.getInterventionMembreEquipe());
+            EtatIntervention etatIntervention= etatInterventionService.findByCode(intervention.getEtatIntervention().getCode());
+            interventions.setEtatIntervention(etatIntervention);
+            if(intervention.getInterventionMembreEquipe()!=null) {
+                for (InterventionMembreEquipe membreEquipe : intervention.getInterventionMembreEquipe()) {
+                    if(interventionMembreEquipeService.findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(membreEquipe.getMembreEquipe().getCollaborateur().getCodeCollaborateur(),code)==null) {
+                        interventionMembreEquipeService.save(membreEquipe, intervention);
+                    }
+                }
+            }
+            if(intervention.getMateraialInterventions()!=null){
+            for (MateraialIntervention materaialIntervention : intervention.getMateraialInterventions()) {
+                materaialIntervention.setIntervention(intervention);
+                materaialInterventionService.save(materaialIntervention);
+            }}
             interventions.setMateraialInterventions(intervention.getMateraialInterventions());
             interventions.setCode(intervention.getCode());
+            if(intervention.getConseils()!=null)
+            {
+                conseilsService.deleteByInterventionCode(code);
+                for (Conseils conseils : intervention.getConseils()) {
+                 conseilsService.save(intervention, conseils);
+            }}
             interventions.setConseils(intervention.getConseils());
             interventions.setDateDebut(intervention.getDateDebut());
             interventions.setDateDeProbleme(intervention.getDateDeProbleme());

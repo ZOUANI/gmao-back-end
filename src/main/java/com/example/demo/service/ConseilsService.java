@@ -47,22 +47,19 @@ public class ConseilsService {
     public List<Conseils> findAll() {
         return conseilsDao.findAll();
     }
+    @Transactional
+    public int deleteByInterventionCode(String code) {
+        return conseilsDao.deleteByInterventionCode(code);
+    }
 
     public int save(Intervention intervention, Conseils conseils) {
         Collaborateur collaborateur = collaborateurService
                 .findByCodeCollaborateur(conseils.getCollaborateur().getCodeCollaborateur());
-        // Equipe equipe=equipeService.findByRef(conseils.etEquipe().getRef());
-        // DateTimeFormatter localdate = DateTimeFormatter.ofPattern("dd-MM-YYYY
-        // HH:mm:ss");
-        // LocalDateTime now = LocalDateTime.now();
         if (collaborateur == null) {
-            // || equipe==null)
             return -2;
         } else {
             Conseils conseil = new Conseils();
             conseil.setCollaborateur(collaborateur);
-            // conseil.setDateDeMessage(conseils.getDateDeMessage());
-            // conseil.setEquipe(equipe);
             conseil.setMessage(conseils.getMessage());
             conseil.setIntervention(intervention);
             conseilsDao.save(conseil);

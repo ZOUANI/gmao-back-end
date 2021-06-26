@@ -18,7 +18,7 @@ public interface ConseilsDao extends JpaRepository<Conseils, Long> {
     public List<Conseils> findAll();
 
     public void deleteById(Long id);
-
+    int deleteByInterventionCode(String code);
     // public int deleteByDateDeMessage(Date date);
     int deleteByCollaborateurCodeCollaborateurAndMessageAndInterventionCode(String code, String message, String interv);
 

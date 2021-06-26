@@ -30,6 +30,10 @@ public class InterventionMembreEquipeService {
     public int deleteByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(String codeCollaborateur, String codeIntervention) {
         return interventionCollaborateurDao.deleteByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(codeCollaborateur, codeIntervention);
     }
+    @Transactional
+    public int deleteByInterventionCode(String code) {
+        return interventionCollaborateurDao.deleteByInterventionCode(code);
+    }
 
     public int save(InterventionMembreEquipe interventionMembreEquipe, Intervention intervention){
 //        interventionCollaborateur.setIntervention(intervention);

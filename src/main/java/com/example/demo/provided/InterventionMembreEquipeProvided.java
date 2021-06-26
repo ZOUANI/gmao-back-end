@@ -23,6 +23,7 @@ public class InterventionMembreEquipeProvided {
         return interventionMembreEquipeService.findByMembreEquipeCollaborateurCodeCollaborateur(code);
     }
 
+
     @Autowired
     InterventionMembreEquipeService interventionMembreEquipeService;
 

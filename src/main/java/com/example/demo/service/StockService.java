@@ -66,6 +66,12 @@ public class StockService {
         ByteArrayInputStream in = SimpleDb2ExcelExporter.StocksToExcel(stocks);
         return in;
     }
+    public int update(int qte,Stock stock ){
+        Stock stock1=findByMagasinReferenceAndMaterialReference(stock.getMagasin().getReference(),stock.getMaterial().getReference());
+        stock1.setQte(qte);
+        stockDao.save(stock1);
+        return 1;
+    }
     @Autowired
     private StockDao stockDao;
     @Autowired

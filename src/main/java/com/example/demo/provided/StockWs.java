@@ -42,6 +42,10 @@ public class StockWs {
     public int deleteByMaterialReference(@PathVariable String ref) {
         return stockService.deleteByMaterialReference(ref);
     }
+    @PutMapping("/update/{qte}")
+    public int update(@PathVariable  int qte,@RequestBody Stock stock) {
+        return stockService.update(qte, stock);
+    }
 
     @DeleteMapping("/refMaterial/{refMaterial}/reference/{reference}")
     public int deleteByMaterialReferenceAndMagasinReference(@PathVariable String refMaterial,@PathVariable String reference) {

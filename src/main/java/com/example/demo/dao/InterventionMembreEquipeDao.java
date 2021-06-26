@@ -12,5 +12,6 @@ public interface InterventionMembreEquipeDao  extends JpaRepository<Intervention
     int deleteByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(String codeCollaborateur,String codeIntervention);
     List<InterventionMembreEquipe> findByInterventionCode(String code);
     int deleteByMembreEquipeCollaborateurCodeCollaborateurAndEquipeRefAndInterventionCode(String code,String ref,String interv);
-    public InterventionMembreEquipe findByMembreEquipeCollaborateurCodeCollaborateur(String code);
+     InterventionMembreEquipe findByMembreEquipeCollaborateurCodeCollaborateur(String code);
+    int deleteByInterventionCode(String code);
 }
