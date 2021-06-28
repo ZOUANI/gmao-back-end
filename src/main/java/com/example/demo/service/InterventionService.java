@@ -105,12 +105,12 @@ public class InterventionService {
 
     public int update(String code, Intervention intervention) {
         Intervention interventions = findByCode(code);
-        interventionMembreEquipeService.deleteByInterventionCode(code);
         if (interventions != null) {
             EtatIntervention etatIntervention= etatInterventionService.findByCode(intervention.getEtatIntervention().getCode());
             interventions.setEtatIntervention(etatIntervention);
             if(intervention.getInterventionMembreEquipe()!=null) {
                 for (InterventionMembreEquipe membreEquipe : intervention.getInterventionMembreEquipe()) {
+                    interventionMembreEquipeService.deleteByInterventionCode(code);
                     if(interventionMembreEquipeService.findByMembreEquipeCollaborateurCodeCollaborateurAndInterventionCode(membreEquipe.getMembreEquipe().getCollaborateur().getCodeCollaborateur(),code)==null) {
                         interventionMembreEquipeService.save(membreEquipe, intervention);
                     }
